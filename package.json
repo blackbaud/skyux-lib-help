@@ -1,7 +1,7 @@
 {
-  "name": "blackbaud-skyux-lib-help",
-  "version": "1.0.0",
-  "description": "Single-page-application for skyux-lib-help",
+  "name": "BB-Help",
+  "version": "1.0.0-beta.0",
+  "description": "Angular 2 components for SKY UX Builder SPAs",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
   "engines": {
