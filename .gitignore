@@ -26,7 +26,7 @@ dist
 # OS specific files
 .DS_Store
 
-# editor specific files
+# Editor specific files
 .vscode
 .vs
 
