@@ -26,5 +26,5 @@ before_install:
   - rm google-chrome*.deb
   - npm install -g @blackbaud/skyux-cli
 
-  after_success:
+after_success:
   - bash <(curl -s https://codecov.io/bash)
