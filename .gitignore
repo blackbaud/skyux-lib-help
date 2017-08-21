@@ -26,6 +26,10 @@ dist
 # OS specific files
 .DS_Store
 
+# Editor specific files
+.vscode
+.vs
+
 *.ngfactory.ts
 *.ngsummary.json
 yarn.lock
