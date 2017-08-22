@@ -9,6 +9,6 @@
   },
   "help": {
     "extends": "renxt",
-    "defaultHelpKey": "bb-constituent-codes.html"
+    "defaultHelpKey": "foo.html"
   }
 }
