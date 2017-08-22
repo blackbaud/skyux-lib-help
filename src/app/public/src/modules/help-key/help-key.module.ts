@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LibrarySampleComponent } from './sample.component';
+import { HelpKeyComponent } from './help-key.component';
 
 @NgModule({
   declarations: [
-    LibrarySampleComponent
+    HelpKeyComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    LibrarySampleComponent
+    HelpKeyComponent
   ]
 })
-export class LibrarySampleModule { }
+export class HelpKeyModule { }
