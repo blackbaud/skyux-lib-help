@@ -8,7 +8,6 @@
     }
   },
   "help": {
-    "extends": "renxt",
-    "defaultHelpKey": "foo.html"
+    "extends": "renxt"
   }
 }

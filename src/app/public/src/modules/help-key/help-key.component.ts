@@ -12,10 +12,10 @@ export class HelpKeyComponent implements OnInit, OnDestroy {
   constructor(private helpService: BBHelpClientService) { }
 
   public ngOnInit() {
-    this.helpService.setHelpKey(this.helpKey);
+    this.helpService.setCurrentHelpKey(this.helpKey);
   }
 
   public ngOnDestroy() {
-    this.helpService.resetHelpKey();
+    this.helpService.resetCurrentHelpKeyToDefault();
   }
 }
