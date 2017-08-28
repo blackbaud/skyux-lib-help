@@ -12,7 +12,7 @@ describe('HelpKeyComponent', () => {
 
   class MockHelpService {
     public setCurrentHelpKey = jasmine.createSpy('setCurrentHelpKey').and.callFake(() => {});
-    public resetCurrentHelpKeyToDefault = jasmine.createSpy('resetCurrenHelpKeytoDefault')
+    public setHelpKeyToDefault = jasmine.createSpy('setHelpKeyToDefault')
       .and.callFake(() => {});
   }
 
@@ -45,6 +45,6 @@ describe('HelpKeyComponent', () => {
     component.helpKey = 'HelpKey';
     component.ngOnDestroy();
     fixture.detectChanges();
-    expect(mockHelpService.resetCurrentHelpKeyToDefault).toHaveBeenCalled();
+    expect(mockHelpService.setHelpKeyToDefault).toHaveBeenCalled();
   });
 });

@@ -16,6 +16,6 @@ export class HelpKeyComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {
-    this.helpService.resetCurrentHelpKeyToDefault();
+    this.helpService.setHelpKeyToDefault();
   }
 }

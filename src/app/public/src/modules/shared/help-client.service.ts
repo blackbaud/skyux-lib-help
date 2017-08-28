@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { BBHelp } from '@blackbaud/help-client';
+import { BBHelpClient } from '@blackbaud/help-client';
 
 @Injectable()
 export class BBHelpClientService {
 
   public setCurrentHelpKey(helpKey: string): void {
-    BBHelp.setCurrentHelpKey(helpKey);
+    BBHelpClient.setCurrentHelpKey(helpKey);
   }
 
   public openWidgetToHelpKey(helpKey: string): void {
-    BBHelp.openWidgetToHelpKey(helpKey);
+    BBHelpClient.openWidgetToHelpKey(helpKey);
   }
 
-  public resetCurrentHelpKeyToDefault(): void {
-    BBHelp.resetCurrentHelpKeyToDefault();
+  public setHelpKeyToDefault(): void {
+    BBHelpClient.setHelpKeyToDefault();
   }
 }
