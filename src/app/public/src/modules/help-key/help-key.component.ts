@@ -7,7 +7,7 @@ import { BBHelpClientService } from '../shared';
 })
 export class HelpKeyComponent implements OnInit, OnDestroy {
   @Input()
-  private helpKey: string;
+  public helpKey: string;
 
   constructor(private helpService: BBHelpClientService) { }
 

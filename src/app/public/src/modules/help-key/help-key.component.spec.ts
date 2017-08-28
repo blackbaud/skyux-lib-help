@@ -2,44 +2,49 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { expect } from '@blackbaud/skyux-builder/runtime/testing/browser';
 
-import { LibrarySampleComponent } from './sample.component';
-import { BBHelpConfigService } from '../shared';
+import { HelpKeyComponent } from './help-key.component';
+import { BBHelpClientService } from '../shared/help-client.service';
 
-class MockSkyAppConfig {
-  public runtime: any = {};
-  public skyux: any = {
-    name: 'test',
-    appSettings: {
-      myLibrary: {
-        name: 'library'
-      }
-    }
-  };
-}
+describe('HelpKeyComponent', () => {
+  let component: HelpKeyComponent;
+  let fixture: ComponentFixture<HelpKeyComponent>;
+  let mockHelpService: any;
 
-describe('LibrarySampleComponent', () => {
-  let component: LibrarySampleComponent;
-  let fixture: ComponentFixture<LibrarySampleComponent>;
+  class MockHelpService {
+    public setCurrentHelpKey = jasmine.createSpy('setCurrentHelpKey').and.callFake(() => {});
+    public resetCurrentHelpKeyToDefault = jasmine.createSpy('resetCurrenHelpKeytoDefault')
+      .and.callFake(() => {});
+  }
 
   beforeEach(() => {
+    mockHelpService = new MockHelpService();
+
     TestBed.configureTestingModule({
       declarations: [
-        LibrarySampleComponent
+        HelpKeyComponent
       ],
       providers: [
-        { provide: BBHelpConfigService, useClass: MockSkyAppConfig }
+        { provide: BBHelpClientService, useValue: mockHelpService }
       ]
     })
-    .compileComponents();
+      .compileComponents();
 
-    fixture = TestBed.createComponent(LibrarySampleComponent);
+    fixture = TestBed.createComponent(HelpKeyComponent);
     component = fixture.componentInstance;
   });
 
-  it('should output the name from config', () => {
+  it('should call call the help service\'s setCurrentHelpKey method with it\'s helpKey', () => {
+    const testHelpKey = 'test-key.html';
+    component.helpKey = testHelpKey;
+    component.ngOnInit();
     fixture.detectChanges();
-    expect(fixture).toExist();
-    expect(component.configService.skyux.name).toBe('test');
-    expect(component.configService.skyux.appSettings.myLibrary.name).toBe('library');
+    expect(mockHelpService.setCurrentHelpKey).toHaveBeenCalledWith(testHelpKey);
+  });
+
+  it('should set the helpKey on the client to default when destroyed', () => {
+    component.helpKey = 'HelpKey';
+    component.ngOnDestroy();
+    fixture.detectChanges();
+    expect(mockHelpService.resetCurrentHelpKeyToDefault).toHaveBeenCalled();
   });
 });

@@ -8,7 +8,7 @@ import { BBHelpClientService } from '../shared';
 })
 export class TestButtonComponent {
   @Input()
-  private helpKey: string;
+  public helpKey: string;
 
   constructor(private helpService: BBHelpClientService) { }
 
