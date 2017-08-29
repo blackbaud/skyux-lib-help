@@ -33,7 +33,7 @@ describe('HelpKeyComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should call call the help service\'s setCurrentHelpKey method with it\'s helpKey', () => {
+  it('should call call the help service\'s setCurrentHelpKey method with its helpKey', () => {
     const testHelpKey = 'test-key.html';
     component.helpKey = testHelpKey;
     component.ngOnInit();
