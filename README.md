@@ -11,4 +11,5 @@ To run this project locally:
 - `npm install` required dependencies.
 - run `npm run build`.
 - copy the contents of the `dist` folder to the `node_modules/@blackbaud/help-client` in `skyux-lib-help`.
+- update the reference in `node_modules/@blackbaud/skyux-builder/src/app/app.component.ts` to import and use `BBHelpClient` instead of `BBHelp`.
 - run `skyux serve` from `skyux-lib-help`
