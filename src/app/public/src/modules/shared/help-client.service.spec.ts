@@ -8,7 +8,7 @@ describe('BBHelpClientService', () => {
 
   it('should call the helpClient\'s setCurrentHelpKey and pass the helpKey to it', () => {
     let helpKey = 'test-key.html';
-    let spyHelp = spyOn(BBHelpClient, 'setCurrentHelpKey').and.callFake(() => {});
+    let spyHelp = spyOn(BBHelpClient, 'setCurrentHelpKey').and.callFake(() => { });
     dataService.setCurrentHelpKey(helpKey);
     expect(spyHelp).toHaveBeenCalledWith(helpKey);
   });
