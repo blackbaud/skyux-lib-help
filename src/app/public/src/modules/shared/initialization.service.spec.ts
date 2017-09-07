@@ -40,6 +40,12 @@ describe('Initialization Service', () => {
     expect(BBHelpClient.load).toHaveBeenCalledWith(mockConfig);
   });
 
+  it('should call the Client\'s load method with the config passed to the service', () => {
+    const mockConfig = { 'productId': 'test_id' };
+    initializationService.load(mockConfig);
+    expect(BBHelpClient.load).toHaveBeenCalledWith(mockConfig);
+  });
+
   it('should not alter the config if no runtime.params are present', () => {
     const mockConfig = {
       'extends': 'some_id',

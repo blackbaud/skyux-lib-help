@@ -9,7 +9,7 @@ export class HelpInitializationService {
 
   constructor(private configService: BBHelpConfigService) { }
 
-  public load(config: any = {}) {
+  public load(config: any) {
     const widgetConfig: HelpWidgetConfig = this.validateConfig(config);
     BBHelpClient.load(widgetConfig);
   }
