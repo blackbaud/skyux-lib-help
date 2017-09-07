@@ -3,28 +3,28 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { expect } from '@blackbaud/skyux-builder/runtime/testing/browser';
 
 import { HelpKeyComponent } from './help-key.component';
-import { BBHelpClientService } from '../shared/help-client.service';
+import { HelpWidgetService } from '../shared';
 
 describe('HelpKeyComponent', () => {
   let component: HelpKeyComponent;
   let fixture: ComponentFixture<HelpKeyComponent>;
-  let mockHelpService: any;
+  let mockWidgetService: any;
 
-  class MockHelpService {
+  class MockWidgetService {
     public setCurrentHelpKey = jasmine.createSpy('setCurrentHelpKey').and.callFake(() => {});
     public setHelpKeyToDefault = jasmine.createSpy('setHelpKeyToDefault')
       .and.callFake(() => {});
   }
 
   beforeEach(() => {
-    mockHelpService = new MockHelpService();
+    mockWidgetService = new MockWidgetService();
 
     TestBed.configureTestingModule({
       declarations: [
         HelpKeyComponent
       ],
       providers: [
-        { provide: BBHelpClientService, useValue: mockHelpService }
+        { provide: HelpWidgetService, useValue: mockWidgetService }
       ]
     })
       .compileComponents();
@@ -38,13 +38,13 @@ describe('HelpKeyComponent', () => {
     component.helpKey = testHelpKey;
     component.ngOnInit();
     fixture.detectChanges();
-    expect(mockHelpService.setCurrentHelpKey).toHaveBeenCalledWith(testHelpKey);
+    expect(mockWidgetService.setCurrentHelpKey).toHaveBeenCalledWith(testHelpKey);
   });
 
   it('should set the helpKey on the client to default when destroyed', () => {
     component.helpKey = 'HelpKey';
     component.ngOnDestroy();
     fixture.detectChanges();
-    expect(mockHelpService.setHelpKeyToDefault).toHaveBeenCalled();
+    expect(mockWidgetService.setHelpKeyToDefault).toHaveBeenCalled();
   });
 });

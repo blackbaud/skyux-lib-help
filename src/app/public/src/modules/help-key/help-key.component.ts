@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
-import { BBHelpClientService } from '../shared';
+import { HelpWidgetService } from '../shared';
 @Component({
   selector: 'bb-help-key',
   template: ''
@@ -9,13 +9,13 @@ export class HelpKeyComponent implements OnInit, OnDestroy {
   @Input()
   public helpKey: string;
 
-  constructor(private helpService: BBHelpClientService) { }
+  constructor(private widgetService: HelpWidgetService) { }
 
   public ngOnInit() {
-    this.helpService.setCurrentHelpKey(this.helpKey);
+    this.widgetService.setCurrentHelpKey(this.helpKey);
   }
 
   public ngOnDestroy() {
-    this.helpService.setHelpKeyToDefault();
+    this.widgetService.setHelpKeyToDefault();
   }
 }

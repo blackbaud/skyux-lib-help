@@ -5,28 +5,28 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { TestButtonComponent } from './test-button.component';
-import { BBHelpClientService } from '../shared/help-client.service';
+import { HelpWidgetService } from '../shared';
 
 describe('TestButtonComponent', () => {
   let component: TestButtonComponent;
   let fixture: ComponentFixture<TestButtonComponent>;
   let debugElement: DebugElement;
 
-  let mockHelpService: any;
+  let mockWidgetService: any;
 
-  class MockHelpService {
-    public openWidgetToHelpKey = jasmine.createSpy('openWidgetToHelpKey').and.callFake(() => { });
+  class MockWidgetService {
+    public openToHelpKey = jasmine.createSpy('openToHelpKey').and.callFake(() => { });
   }
 
   beforeEach(() => {
-    mockHelpService = new MockHelpService();
+    mockWidgetService = new MockWidgetService();
 
     TestBed.configureTestingModule({
       declarations: [
         TestButtonComponent
       ],
       providers: [
-        { provide: BBHelpClientService, useValue: mockHelpService }
+        { provide: HelpWidgetService, useValue: mockWidgetService }
       ]
     })
       .compileComponents();
@@ -40,6 +40,6 @@ describe('TestButtonComponent', () => {
     const helpKey = 'test-key.html';
     component.helpKey = helpKey;
     debugElement.query(By.css('.test-button-component')).triggerEventHandler('click', undefined);
-    expect(mockHelpService.openWidgetToHelpKey).toHaveBeenCalledWith(helpKey);
+    expect(mockWidgetService.openToHelpKey).toHaveBeenCalledWith(helpKey);
   });
 });

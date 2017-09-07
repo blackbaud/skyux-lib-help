@@ -1,10 +1,10 @@
 import { expect } from '@blackbaud/skyux-builder/runtime/testing/browser';
 import { BBHelpClient } from '@blackbaud/help-client';
 
-import { BBHelpClientService } from './help-client.service';
+import { HelpWidgetService } from './widget.service';
 
 describe('BBHelpClientService', () => {
-  let dataService = new BBHelpClientService();
+  let dataService = new HelpWidgetService();
 
   it('should call the helpClient\'s setCurrentHelpKey and pass the helpKey to it', () => {
     let helpKey = 'test-key.html';
@@ -13,10 +13,10 @@ describe('BBHelpClientService', () => {
     expect(spyHelp).toHaveBeenCalledWith(helpKey);
   });
 
-  it('should call the helpClient\'s openWidgetToHelpKey and pass the helpKey to it', () => {
+  it('should call the helpClient\'s openToHelpKey and pass the helpKey to it', () => {
     let helpKey = 'test-key.html';
     let spyHelp = spyOn(BBHelpClient, 'openWidgetToHelpKey').and.callFake(() => { });
-    dataService.openWidgetToHelpKey(helpKey);
+    dataService.openToHelpKey(helpKey);
     expect(spyHelp).toHaveBeenCalledWith(helpKey);
   });
 

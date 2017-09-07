@@ -9,6 +9,7 @@ export class BBHelpConfigService {
   };
 
   public runtime: any = {
-    routes: []
+    routes: [],
+    params: {}
   };
 }
