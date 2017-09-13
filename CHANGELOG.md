@@ -5,5 +5,5 @@
 - `bb-help-key` component released.
 - `HelpWidgetService` released.
 - `HelpInitializationService` released.
-- Depenedency shift for `HelpClient` to the this library from Builder.
+- Shifting the dependency for `HelpClient` to this library from `skyux-builder`.
 
