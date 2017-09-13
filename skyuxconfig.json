@@ -6,5 +6,8 @@
     "myLibrary": {
       "name": "BB-Help"
     }
+  },
+  "help": {
+    "extends": "renxt"
   }
 }
