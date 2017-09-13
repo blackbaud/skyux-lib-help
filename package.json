@@ -1,5 +1,5 @@
 {
-  "name": "@blackbaud/help",
+  "name": "@blackbaud/skyux-lib-help",
   "version": "1.0.0",
   "description": "Angular 2 components for SKY UX Builder SPAs",
   "main": "bundles/bundle.umd.js",
