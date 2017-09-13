@@ -1,10 +1,10 @@
 {
   "mode": "easy",
-  "name": "bb-help",
+  "name": "skyux-lib-help",
   "compileMode": "aot",
   "appSettings": {
     "myLibrary": {
-      "name": "BB-Help"
+      "name": "skyux-lib-help"
     }
   },
   "help": {
