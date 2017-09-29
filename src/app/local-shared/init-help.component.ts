@@ -6,9 +6,7 @@ import { HelpInitializationService } from '../public';
   template: ''
 })
 export class HelpInitComponent {
-  constructor(
-    private initService: HelpInitializationService
-  ) {
+  constructor(private initService: HelpInitializationService) {
     this.initService.load({
       extends: 'renxt'
     });
