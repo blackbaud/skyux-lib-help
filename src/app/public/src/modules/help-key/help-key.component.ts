@@ -9,8 +9,17 @@ export class HelpKeyComponent implements OnDestroy {
   private _helpKey: string = '';
 
   @Input()
+  private isTemporary: boolean = false;
+
+  @Input()
   set helpKey (helpKey: string) {
     this._helpKey = helpKey;
+
+    if (this.isTemporary) {
+      this.widgetService.setTemporaryHelpKey(this.helpKey);
+      return;
+    }
+
     this.widgetService.setCurrentHelpKey(this.helpKey);
   }
 
@@ -21,6 +30,10 @@ export class HelpKeyComponent implements OnDestroy {
   constructor(private widgetService: HelpWidgetService) { }
 
   public ngOnDestroy() {
+    if (this.isTemporary) {
+      this.widgetService.removeTemporaryHelpKey();
+      return;
+    }
     this.widgetService.setHelpKeyToDefault();
   }
 }

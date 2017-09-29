@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 
 import { BBHelpModule } from './public';
 
+import { SkyModalDemoFormComponent } from './modal-demo/modal-demo-form.component';
+
 // Specify entry components, module-level providers, etc. here.
 @NgModule({
   imports: [
@@ -11,6 +13,8 @@ import { BBHelpModule } from './public';
     BBHelpModule
   ],
   providers: [],
-  entryComponents: []
+  entryComponents: [
+    SkyModalDemoFormComponent
+  ]
 })
 export class AppExtrasModule { }
