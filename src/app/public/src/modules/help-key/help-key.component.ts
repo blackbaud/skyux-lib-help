@@ -9,7 +9,7 @@ export class HelpKeyComponent implements OnDestroy {
   private _helpKey: string = '';
 
   @Input()
-  private isTemporary: boolean = false;
+  public isTemporary: boolean = false;
 
   @Input()
   set helpKey (helpKey: string) {

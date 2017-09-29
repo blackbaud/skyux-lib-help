@@ -15,7 +15,7 @@ export class SkyModalDemoComponent {
 
   public openModal() {
     let context = new SkyModalDemoContext();
-    context.value1 = 'Default text';
+    context.valueA = 'Default text';
 
     let modalInstance = this.modal.open(SkyModalDemoFormComponent, {
       providers: [

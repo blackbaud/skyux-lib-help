@@ -12,8 +12,9 @@ describe('HelpKeyComponent', () => {
 
   class MockWidgetService {
     public setCurrentHelpKey = jasmine.createSpy('setCurrentHelpKey').and.callFake(() => {});
-    public setHelpKeyToDefault = jasmine.createSpy('setHelpKeyToDefault')
-      .and.callFake(() => {});
+    public setHelpKeyToDefault = jasmine.createSpy('setHelpKeyToDefault').and.callFake(() => {});
+    public setTemporaryHelpKey = jasmine.createSpy('setTemporaryHelpKey').and.callFake(() => {});
+    public removeTemporaryHelpKey = jasmine.createSpy('removeTemporaryHelpKey').and.callFake(() => {});
   }
 
   beforeEach(() => {
@@ -51,6 +52,30 @@ describe('HelpKeyComponent', () => {
     component.helpKey = testHelpKey2;
     fixture.detectChanges();
     expect(mockWidgetService.setCurrentHelpKey).toHaveBeenCalledWith(testHelpKey2);
+  });
+
+  it('should set the helpKey on the client to default when destroyed', () => {
+    component.helpKey = 'HelpKey';
+    component.ngOnDestroy();
+    fixture.detectChanges();
+    expect(mockWidgetService.setCurrentHelpKey).toHaveBeenCalled();
+  });
+
+  it('should set the help key as temporary if the isTemporary attribute is true', () => {
+    component.isTemporary = true;
+    component.helpKey = 'HelpKey';
+    fixture.detectChanges();
+    expect(mockWidgetService.setCurrentHelpKey).not.toHaveBeenCalled();
+    expect(mockWidgetService.setTemporaryHelpKey).toHaveBeenCalled();
+  });
+
+  it('should remove the temporary help key as if the isTemporary attribute is true when destroyed', () => {
+    component.isTemporary = true;
+    component.helpKey = 'HelpKey';
+    component.ngOnDestroy();
+    fixture.detectChanges();
+    expect(mockWidgetService.setHelpKeyToDefault).not.toHaveBeenCalled();
+    expect(mockWidgetService.removeTemporaryHelpKey).toHaveBeenCalled();
   });
 
   it('should set the helpKey on the client to default when destroyed', () => {
