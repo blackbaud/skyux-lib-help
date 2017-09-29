@@ -7,10 +7,10 @@ import { HelpKeyComponent } from '../public/src/modules/help-key';
 import { HelpWidgetService } from '../public';
 
 class MockWidgetService {
-  public setCurrentHelpKey() {}
-  public setCurrentHelpKeyToDefault() {}
+  public setCurrentHelpKey = jasmine.createSpy('setCurrentHelpKey').and.callFake(() => { });
+  public setHelpKeyToDefault = jasmine.createSpy('setHelpKeyToDefault')
+    .and.callFake(() => { });
 }
-
 describe('ToggleKeyComponent', () => {
   let component: ToggleKeyComponent;
   let fixture: ComponentFixture<ToggleKeyComponent>;
