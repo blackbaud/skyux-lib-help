@@ -20,8 +20,8 @@
     "@blackbaud/help-client": "1.0.2"
   },
   "devDependencies": {
-    "@blackbaud/skyux-builder": "Blackbaud-BrandonJones/skyux-builder#feature-update-help-client",
-    "@blackbaud/skyux": "2.0.0-rc.12"
+    "@blackbaud/skyux-builder": "^1.0.2",
+    "@blackbaud/skyux": "^2.0.0"
   },
   "repository": {
     "type": "git",

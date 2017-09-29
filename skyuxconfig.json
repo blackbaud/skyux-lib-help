@@ -6,8 +6,5 @@
     "myLibrary": {
       "name": "skyux-lib-help"
     }
-  },
-  "help": {
-    "extends": "renxt"
   }
 }

@@ -36,9 +36,21 @@ describe('HelpKeyComponent', () => {
   it('should call call the help service\'s setCurrentHelpKey method with its helpKey', () => {
     const testHelpKey = 'test-key.html';
     component.helpKey = testHelpKey;
-    component.ngOnInit();
     fixture.detectChanges();
     expect(mockWidgetService.setCurrentHelpKey).toHaveBeenCalledWith(testHelpKey);
+  });
+
+  it('should call call the help service\'s setCurrentHelpKey method with its helpKey every time the helpKey changes', () => {
+    const testHelpKey1 = 'test-key1.html';
+    const testHelpKey2 = 'test-key2.html';
+
+    component.helpKey = testHelpKey1;
+    fixture.detectChanges();
+    expect(mockWidgetService.setCurrentHelpKey).toHaveBeenCalledWith(testHelpKey1);
+
+    component.helpKey = testHelpKey2;
+    fixture.detectChanges();
+    expect(mockWidgetService.setCurrentHelpKey).toHaveBeenCalledWith(testHelpKey2);
   });
 
   it('should set the helpKey on the client to default when destroyed', () => {
