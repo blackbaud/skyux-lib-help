@@ -1,24 +1,19 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
 import { HelpWidgetService } from '../shared';
 @Component({
   selector: 'bb-help-key',
   template: ''
 })
-export class HelpKeyComponent implements OnDestroy {
-  private _helpKey: string = '';
-
+export class HelpKeyComponent implements OnInit, OnDestroy {
   @Input()
-  set helpKey (helpKey: string) {
-    this._helpKey = helpKey;
-    this.widgetService.setCurrentHelpKey(this.helpKey);
-  }
-
-  get helpKey(): string {
-    return this._helpKey;
-  }
+  public helpKey: string;
 
   constructor(private widgetService: HelpWidgetService) { }
+
+  public ngOnInit() {
+    this.widgetService.setCurrentHelpKey(this.helpKey);
+  }
 
   public ngOnDestroy() {
     this.widgetService.setHelpKeyToDefault();
