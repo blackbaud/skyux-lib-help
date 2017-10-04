@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'toggle-key',
-  templateUrl: './toggle-key.component.html'
+  templateUrl: './toggle-key.component.html',
+  styleUrls: ['./toggle-key.component.scss']
 })
 export class ToggleKeyComponent {
-  public helpKey1: string = 'email.html';
-  public helpKey2: string = 'email-sent-email.html';
+  public helpKey1: string = 'advocacy.html';
+  public helpKey2: string = 'bb-new-features.html';
 
   public helpKey: string = this.helpKey1;
 
