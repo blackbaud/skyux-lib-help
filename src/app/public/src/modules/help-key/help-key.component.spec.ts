@@ -11,10 +11,15 @@ describe('HelpKeyComponent', () => {
   let mockWidgetService: any;
 
   class MockWidgetService {
+<<<<<<< HEAD
     public setCurrentHelpKey = jasmine.createSpy('setCurrentHelpKey').and.callFake(() => {});
     public setHelpKeyToDefault = jasmine.createSpy('setHelpKeyToDefault').and.callFake(() => {});
     public setTemporaryHelpKey = jasmine.createSpy('setTemporaryHelpKey').and.callFake(() => {});
     public removeTemporaryHelpKey = jasmine.createSpy('removeTemporaryHelpKey').and.callFake(() => {});
+=======
+    public setCurrentHelpKey = jasmine.createSpy('setCurrentHelpKey').and.callFake(() => { });
+    public setHelpKeyToDefault = jasmine.createSpy('setHelpKeyToDefault').and.callFake(() => { });
+>>>>>>> 5485b505f51dc5128f1aa12f195d67783eae49b3
   }
 
   beforeEach(() => {
@@ -34,7 +39,7 @@ describe('HelpKeyComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should call call the help service\'s setCurrentHelpKey method with its helpKey', () => {
+  it('should call the help service\'s setCurrentHelpKey method with its helpKey', () => {
     const testHelpKey = 'test-key.html';
     component.helpKey = testHelpKey;
     fixture.detectChanges();
