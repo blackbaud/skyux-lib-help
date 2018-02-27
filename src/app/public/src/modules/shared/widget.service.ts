@@ -5,12 +5,29 @@ import { BBHelpClient } from '@blackbaud/help-client';
 export class HelpWidgetService {
   private _pageDefaultKey: string;
 
+  public disabledCount: number = 0;
+
   set pageDefaultKey(helpKey: string) {
     this._pageDefaultKey = helpKey;
   }
 
   get pageDefaultKey(): string {
     return this._pageDefaultKey;
+  }
+
+  public increaseDisabledCount(): void {
+    this.disabledCount++;
+    this.disableWidget();
+  }
+
+  public decreaseDisabledCount(): void {
+    if (this.disabledCount > 0) {
+      this.disabledCount--;
+    }
+
+    if (this.disabledCount === 0) {
+      this.enableWidget();
+    }
   }
 
   public setPageDefaultKey(defaultKey: string): void {
@@ -37,5 +54,21 @@ export class HelpWidgetService {
 
   public toggleOpen(): void {
     BBHelpClient.toggleOpen();
+  }
+
+  public openWidget(): void {
+    BBHelpClient.openWidget();
+  }
+
+  public closeWidget(): void {
+    BBHelpClient.closeWidget();
+  }
+
+  public disableWidget(): void {
+    BBHelpClient.disableWidget();
+  }
+
+  public enableWidget(): void {
+    BBHelpClient.enableWidget();
   }
 }

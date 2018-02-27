@@ -1,4 +1,3 @@
-import { expect } from '@blackbaud/skyux-builder/runtime/testing/browser';
 import { BBHelpClient } from '@blackbaud/help-client';
 
 import { HelpWidgetService } from './widget.service';
@@ -61,10 +60,66 @@ describe('BBHelpClientService', () => {
     expect(spyHelp).toHaveBeenCalledWith(defaultPageKey);
   });
 
+  it('should call the helpClient\'s openWidget method', () => {
+    let spyHelp = spyOn(BBHelpClient, 'openWidget').and.callFake(() => { });
+    dataService.openWidget();
+
+    expect(spyHelp).toHaveBeenCalled();
+  });
+
+  it('should call the helpClient\'s closeWidget method', () => {
+    let spyHelp = spyOn(BBHelpClient, 'closeWidget').and.callFake(() => { });
+    dataService.closeWidget();
+
+    expect(spyHelp).toHaveBeenCalled();
+  });
+
   it('should call the helpClient\'s toggleOpen method', () => {
     let spyHelp = spyOn(BBHelpClient, 'toggleOpen').and.callFake(() => { });
     dataService.toggleOpen();
 
     expect(spyHelp).toHaveBeenCalled();
+  });
+
+  it('should disable the HelpWidget when the disabledCount is > 0', () => {
+    let spyHelp = spyOn(BBHelpClient, 'disableWidget').and.callFake(() => { });
+    expect(dataService.disabledCount).toEqual(0);
+    dataService.increaseDisabledCount();
+    expect(dataService.disabledCount).toEqual(1);
+    expect(spyHelp).toHaveBeenCalled();
+  });
+
+  it('should enable the HelpWidget when the disabledCount only decreases below 1', () => {
+    let spyHelpDisable = spyOn(BBHelpClient, 'disableWidget').and.callFake(() => { });
+    let spyHelpEnable = spyOn(BBHelpClient, 'enableWidget').and.callFake(() => { });
+    // Reset the disabled count from previous tests.
+
+    dataService.disabledCount = 0;
+    expect(dataService.disabledCount).toEqual(0);
+    expect(spyHelpEnable).not.toHaveBeenCalled();
+    dataService.increaseDisabledCount();
+    expect(dataService.disabledCount).toEqual(1);
+    expect(spyHelpDisable).toHaveBeenCalled();
+    expect(spyHelpEnable).not.toHaveBeenCalled();
+    dataService.increaseDisabledCount();
+    expect(dataService.disabledCount).toEqual(2);
+    dataService.decreaseDisabledCount();
+    expect(dataService.disabledCount).toEqual(1);
+    expect(spyHelpEnable).not.toHaveBeenCalled();
+    dataService.decreaseDisabledCount();
+    expect(dataService.disabledCount).toEqual(0);
+    expect(spyHelpEnable).toHaveBeenCalled();
+  });
+
+  it('should not allow disabledCount to decrease below 0', () => {
+    let spyHelpEnable = spyOn(BBHelpClient, 'enableWidget').and.callFake(() => { });
+    // Reset the disabled count from previous tests.
+
+    dataService.disabledCount = 0;
+    dataService.decreaseDisabledCount();
+    dataService.decreaseDisabledCount();
+    dataService.decreaseDisabledCount();
+    expect(dataService.disabledCount).toEqual(0);
+    expect(spyHelpEnable).toHaveBeenCalled();
   });
 });
