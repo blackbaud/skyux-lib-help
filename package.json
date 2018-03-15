@@ -20,8 +20,8 @@
     "@blackbaud/help-client": "https://github.com/blackbaud/help-client.git#add-methods-enable-disable"
   },
   "devDependencies": {
-    "@blackbaud/skyux-builder": "^1.10.0",
-    "@blackbaud/skyux": "^2.9.0"
+    "@blackbaud/skyux-builder": "1.10.1",
+    "@blackbaud/skyux": "2.10.0"
   },
   "repository": {
     "type": "git",
