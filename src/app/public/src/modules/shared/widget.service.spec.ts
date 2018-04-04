@@ -60,22 +60,71 @@ describe('BBHelpClientService', () => {
     expect(spyHelp).toHaveBeenCalledWith(defaultPageKey);
   });
 
-  it('should call the helpClient\'s openWidget method', () => {
+  it('should see if the client is ready before calling async methods', () => {
     let spyHelp = spyOn(BBHelpClient, 'openWidget').and.callFake(() => { });
-    dataService.openWidget();
+    let spyReady = spyOn(BBHelpClient, 'ready').and.callFake(() => {
+      return Promise.resolve();
+    });
 
-    expect(spyHelp).toHaveBeenCalled();
+    dataService.openWidget()
+      .then(() => {
+        expect(spyReady).toHaveBeenCalled();
+        expect(spyHelp).toHaveBeenCalled();
+      });
   });
 
-  it('should call the helpClient\'s closeWidget method', () => {
-    let spyHelp = spyOn(BBHelpClient, 'closeWidget').and.callFake(() => { });
-    dataService.closeWidget();
+  it('should not call any async methods if ready check fails', (done: any) => {
+    let spyHelp = spyOn(BBHelpClient, 'openWidget').and.callFake(() => { });
+    let spyReady = spyOn(BBHelpClient, 'ready').and.callFake(() => {
+      return Promise.reject('reason');
+    });
 
-    expect(spyHelp).toHaveBeenCalled();
+    dataService.openWidget()
+      .then(() => {
+        expect(spyReady).toHaveBeenCalled();
+        expect(spyHelp).not.toHaveBeenCalled();
+        done();
+      })
+      .catch(() => {
+        done();
+      });
+  });
+
+  it('should call the helpClient\'s openWidget method', (done: any) => {
+    let spyHelp = spyOn(BBHelpClient, 'openWidget').and.callFake(() => { });
+    spyOn(BBHelpClient, 'ready').and.callFake(() => {
+      return Promise.resolve();
+    });
+
+    dataService.openWidget()
+      .then(() => {
+        expect(spyHelp).toHaveBeenCalled();
+        done();
+      })
+      .catch(() => {
+        done();
+      });
+  });
+
+  it('should call the helpClient\'s closeWidget method', (done: any) => {
+    let spyHelp = spyOn(BBHelpClient, 'closeWidget').and.callFake(() => { });
+    spyOn(BBHelpClient, 'ready').and.callFake(() => {
+      return Promise.resolve();
+    });
+
+    dataService.closeWidget()
+      .then(() => {
+        expect(spyHelp).toHaveBeenCalled();
+        done();
+      });
   });
 
   it('should call the helpClient\'s toggleOpen method', () => {
     let spyHelp = spyOn(BBHelpClient, 'toggleOpen').and.callFake(() => { });
+    spyOn(BBHelpClient, 'ready').and.callFake(() => {
+      return Promise.resolve();
+    });
+
     dataService.toggleOpen();
 
     expect(spyHelp).toHaveBeenCalled();
@@ -83,6 +132,10 @@ describe('BBHelpClientService', () => {
 
   it('should disable the HelpWidget when the disabledCount is > 0', () => {
     let spyHelp = spyOn(BBHelpClient, 'disableWidget').and.callFake(() => { });
+    spyOn(BBHelpClient, 'ready').and.callFake(() => {
+      return Promise.resolve();
+    });
+
     expect(dataService.disabledCount).toEqual(0);
     dataService.increaseDisabledCount();
     expect(dataService.disabledCount).toEqual(1);
@@ -92,9 +145,13 @@ describe('BBHelpClientService', () => {
   it('should enable the HelpWidget when the disabledCount only decreases below 1', () => {
     let spyHelpDisable = spyOn(BBHelpClient, 'disableWidget').and.callFake(() => { });
     let spyHelpEnable = spyOn(BBHelpClient, 'enableWidget').and.callFake(() => { });
-    // Reset the disabled count from previous tests.
+    spyOn(BBHelpClient, 'ready').and.callFake(() => {
+      return Promise.resolve();
+    });
 
+    // Reset the disabled count from previous tests.
     dataService.disabledCount = 0;
+
     expect(dataService.disabledCount).toEqual(0);
     expect(spyHelpEnable).not.toHaveBeenCalled();
     dataService.increaseDisabledCount();
@@ -113,9 +170,13 @@ describe('BBHelpClientService', () => {
 
   it('should not allow disabledCount to decrease below 0', () => {
     let spyHelpEnable = spyOn(BBHelpClient, 'enableWidget').and.callFake(() => { });
-    // Reset the disabled count from previous tests.
+    spyOn(BBHelpClient, 'ready').and.callFake(() => {
+      return Promise.resolve();
+    });
 
+    // Reset the disabled count from previous tests.
     dataService.disabledCount = 0;
+
     dataService.decreaseDisabledCount();
     dataService.decreaseDisabledCount();
     dataService.decreaseDisabledCount();

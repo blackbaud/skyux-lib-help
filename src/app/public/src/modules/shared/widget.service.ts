@@ -56,19 +56,33 @@ export class HelpWidgetService {
     BBHelpClient.toggleOpen();
   }
 
-  public openWidget(): void {
-    BBHelpClient.openWidget();
+  public openWidget(): Promise<any> {
+    return this.executeWhenClientReady(() => {
+      BBHelpClient.openWidget();
+    });
   }
 
-  public closeWidget(): void {
-    BBHelpClient.closeWidget();
+  public closeWidget(): Promise<any> {
+    return this.executeWhenClientReady(() => {
+      BBHelpClient.closeWidget();
+    });
   }
 
-  public disableWidget(): void {
-    BBHelpClient.disableWidget();
+  public disableWidget(): Promise<any> {
+    return BBHelpClient.disableWidget();
   }
 
-  public enableWidget(): void {
-    BBHelpClient.enableWidget();
+  public enableWidget(): Promise<any> {
+    return BBHelpClient.enableWidget();
+  }
+
+  private executeWhenClientReady(callBack: any): Promise<any> {
+    return BBHelpClient.ready()
+      .then(() => {
+        return callBack();
+      })
+      .catch((error: string) => {
+        return error;
+      });
   }
 }
