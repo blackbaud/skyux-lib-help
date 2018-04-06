@@ -69,14 +69,18 @@ export class HelpWidgetService {
   }
 
   public disableWidget(): Promise<any> {
-    return BBHelpClient.disableWidget();
+    return this.executeWhenClientReady(() => {
+      BBHelpClient.disableWidget();
+    });
   }
 
   public enableWidget(): Promise<any> {
-    return BBHelpClient.enableWidget();
+    return this.executeWhenClientReady(() => {
+      BBHelpClient.enableWidget();
+    });
   }
 
-  private executeWhenClientReady(callBack: any): Promise<any> {
+  public executeWhenClientReady(callBack: any): Promise<any> {
     return BBHelpClient.ready()
       .then(() => {
         return callBack();

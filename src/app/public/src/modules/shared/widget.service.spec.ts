@@ -1,9 +1,22 @@
 import { BBHelpClient } from '@blackbaud/help-client';
 
 import { HelpWidgetService } from './widget.service';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('BBHelpClientService', () => {
   let dataService = new HelpWidgetService();
+  let resolvePromise = true;
+
+  beforeEach(() => {
+    resolvePromise = true;
+    spyOn(BBHelpClient, 'ready').and.callFake(() => {
+      if (resolvePromise) {
+        return Promise.resolve();
+      } else {
+        return Promise.reject('reason');
+      }
+    });
+  });
 
   it('should call the helpClient\'s setCurrentHelpKey and pass the helpKey to it', () => {
     let helpKey = 'test-key.html';
@@ -60,94 +73,62 @@ describe('BBHelpClientService', () => {
     expect(spyHelp).toHaveBeenCalledWith(defaultPageKey);
   });
 
-  it('should see if the client is ready before calling async methods', () => {
+  it('should see if the client is ready before calling async methods', fakeAsync(() => {
     let spyHelp = spyOn(BBHelpClient, 'openWidget').and.callFake(() => { });
-    let spyReady = spyOn(BBHelpClient, 'ready').and.callFake(() => {
-      return Promise.resolve();
-    });
-
     dataService.openWidget()
       .then(() => {
-        expect(spyReady).toHaveBeenCalled();
         expect(spyHelp).toHaveBeenCalled();
       });
-  });
+  }));
 
-  it('should not call any async methods if ready check fails', (done: any) => {
+  it('should not call any async methods if ready check fails', () => {
     let spyHelp = spyOn(BBHelpClient, 'openWidget').and.callFake(() => { });
-    let spyReady = spyOn(BBHelpClient, 'ready').and.callFake(() => {
-      return Promise.reject('reason');
-    });
+    resolvePromise = false;
 
     dataService.openWidget()
       .then(() => {
-        expect(spyReady).toHaveBeenCalled();
         expect(spyHelp).not.toHaveBeenCalled();
-        done();
-      })
-      .catch(() => {
-        done();
       });
   });
 
-  it('should call the helpClient\'s openWidget method', (done: any) => {
+  it('should call the helpClient\'s openWidget method', () => {
     let spyHelp = spyOn(BBHelpClient, 'openWidget').and.callFake(() => { });
-    spyOn(BBHelpClient, 'ready').and.callFake(() => {
-      return Promise.resolve();
-    });
+    resolvePromise = true;
 
     dataService.openWidget()
       .then(() => {
         expect(spyHelp).toHaveBeenCalled();
-        done();
-      })
-      .catch(() => {
-        done();
       });
   });
 
-  it('should call the helpClient\'s closeWidget method', (done: any) => {
+  it('should call the helpClient\'s closeWidget method', () => {
     let spyHelp = spyOn(BBHelpClient, 'closeWidget').and.callFake(() => { });
-    spyOn(BBHelpClient, 'ready').and.callFake(() => {
-      return Promise.resolve();
-    });
 
     dataService.closeWidget()
       .then(() => {
         expect(spyHelp).toHaveBeenCalled();
-        done();
       });
   });
 
   it('should call the helpClient\'s toggleOpen method', () => {
     let spyHelp = spyOn(BBHelpClient, 'toggleOpen').and.callFake(() => { });
-    spyOn(BBHelpClient, 'ready').and.callFake(() => {
-      return Promise.resolve();
-    });
-
     dataService.toggleOpen();
-
     expect(spyHelp).toHaveBeenCalled();
   });
 
-  it('should disable the HelpWidget when the disabledCount is > 0', () => {
+  it('should disable the HelpWidget when the disabledCount is > 0', fakeAsync(() => {
     let spyHelp = spyOn(BBHelpClient, 'disableWidget').and.callFake(() => { });
-    spyOn(BBHelpClient, 'ready').and.callFake(() => {
-      return Promise.resolve();
-    });
 
     expect(dataService.disabledCount).toEqual(0);
     dataService.increaseDisabledCount();
     expect(dataService.disabledCount).toEqual(1);
+    tick(1000);
     expect(spyHelp).toHaveBeenCalled();
-  });
+  }));
 
-  it('should enable the HelpWidget when the disabledCount only decreases below 1', () => {
+  it('should enable the HelpWidget when the disabledCount only decreases below 1', fakeAsync(() => {
     let spyHelpDisable = spyOn(BBHelpClient, 'disableWidget').and.callFake(() => { });
     let spyHelpEnable = spyOn(BBHelpClient, 'enableWidget').and.callFake(() => { });
-    spyOn(BBHelpClient, 'ready').and.callFake(() => {
-      return Promise.resolve();
-    });
 
     // Reset the disabled count from previous tests.
     dataService.disabledCount = 0;
@@ -155,24 +136,25 @@ describe('BBHelpClientService', () => {
     expect(dataService.disabledCount).toEqual(0);
     expect(spyHelpEnable).not.toHaveBeenCalled();
     dataService.increaseDisabledCount();
+    tick(1000);
     expect(dataService.disabledCount).toEqual(1);
     expect(spyHelpDisable).toHaveBeenCalled();
     expect(spyHelpEnable).not.toHaveBeenCalled();
     dataService.increaseDisabledCount();
+    tick(1000);
     expect(dataService.disabledCount).toEqual(2);
     dataService.decreaseDisabledCount();
+    tick(1000);
     expect(dataService.disabledCount).toEqual(1);
     expect(spyHelpEnable).not.toHaveBeenCalled();
     dataService.decreaseDisabledCount();
+    tick(1000);
     expect(dataService.disabledCount).toEqual(0);
     expect(spyHelpEnable).toHaveBeenCalled();
-  });
+  }));
 
-  it('should not allow disabledCount to decrease below 0', () => {
+  it('should not allow disabledCount to decrease below 0', fakeAsync(() => {
     let spyHelpEnable = spyOn(BBHelpClient, 'enableWidget').and.callFake(() => { });
-    spyOn(BBHelpClient, 'ready').and.callFake(() => {
-      return Promise.resolve();
-    });
 
     // Reset the disabled count from previous tests.
     dataService.disabledCount = 0;
@@ -180,7 +162,8 @@ describe('BBHelpClientService', () => {
     dataService.decreaseDisabledCount();
     dataService.decreaseDisabledCount();
     dataService.decreaseDisabledCount();
+    tick(1000);
     expect(dataService.disabledCount).toEqual(0);
     expect(spyHelpEnable).toHaveBeenCalled();
-  });
+  }));
 });

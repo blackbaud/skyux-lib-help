@@ -23,9 +23,11 @@ class MockWidgetService {
     }
   }
 
-  public disableWidget(): void {}
+  public disableWidget(): void {
+  }
 
-  public enableWidget(): void {}
+  public enableWidget(): void {
+  }
 }
 
 describe('BBHelpDisableWidgetDirective', () => {
