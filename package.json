@@ -17,7 +17,7 @@
   "author": "Blackbaud",
   "license": "ISC",
   "dependencies": {
-    "@blackbaud/help-client": "https://github.com/blackbaud/help-client.git#add-methods-enable-disable"
+    "@blackbaud/help-client": "1.2.0"
   },
   "devDependencies": {
     "@blackbaud/skyux-builder": "1.10.0",
