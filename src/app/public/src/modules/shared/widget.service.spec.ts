@@ -116,38 +116,32 @@ describe('BBHelpClientService', () => {
     expect(spyHelp).toHaveBeenCalled();
   });
 
-  it('should disable the HelpWidget when the disabledCount is > 0', fakeAsync(() => {
-    let spyHelp = spyOn(BBHelpClient, 'disableWidget').and.callFake(() => { });
-
+  it('should increase the disableCount each time disableWidget is called', fakeAsync(() => {
     expect(dataService.disabledCount).toEqual(0);
-    dataService.increaseDisabledCount();
+    dataService.disableWidget();
     expect(dataService.disabledCount).toEqual(1);
-    tick(1000);
-    expect(spyHelp).toHaveBeenCalled();
+    dataService.disableWidget();
+    dataService.disableWidget();
+    expect(dataService.disabledCount).toEqual(3);
   }));
 
-  it('should enable the HelpWidget when the disabledCount only decreases below 1', fakeAsync(() => {
-    let spyHelpDisable = spyOn(BBHelpClient, 'disableWidget').and.callFake(() => { });
+  it('should enable the HelpWidget when the disabledCount decreases below 1', fakeAsync(() => {
     let spyHelpEnable = spyOn(BBHelpClient, 'enableWidget').and.callFake(() => { });
 
     // Reset the disabled count from previous tests.
-    dataService.disabledCount = 0;
+    dataService.disabledCount = 3;
 
-    expect(dataService.disabledCount).toEqual(0);
+    expect(dataService.disabledCount).toEqual(3);
     expect(spyHelpEnable).not.toHaveBeenCalled();
-    dataService.increaseDisabledCount();
-    tick(1000);
-    expect(dataService.disabledCount).toEqual(1);
-    expect(spyHelpDisable).toHaveBeenCalled();
-    expect(spyHelpEnable).not.toHaveBeenCalled();
-    dataService.increaseDisabledCount();
+    dataService.enableWidget();
     tick(1000);
     expect(dataService.disabledCount).toEqual(2);
-    dataService.decreaseDisabledCount();
+    expect(spyHelpEnable).not.toHaveBeenCalled();
+    dataService.enableWidget();
     tick(1000);
     expect(dataService.disabledCount).toEqual(1);
     expect(spyHelpEnable).not.toHaveBeenCalled();
-    dataService.decreaseDisabledCount();
+    dataService.enableWidget();
     tick(1000);
     expect(dataService.disabledCount).toEqual(0);
     expect(spyHelpEnable).toHaveBeenCalled();
@@ -159,9 +153,9 @@ describe('BBHelpClientService', () => {
     // Reset the disabled count from previous tests.
     dataService.disabledCount = 0;
 
-    dataService.decreaseDisabledCount();
-    dataService.decreaseDisabledCount();
-    dataService.decreaseDisabledCount();
+    dataService.enableWidget();
+    dataService.enableWidget();
+    dataService.enableWidget();
     tick(1000);
     expect(dataService.disabledCount).toEqual(0);
     expect(spyHelpEnable).toHaveBeenCalled();

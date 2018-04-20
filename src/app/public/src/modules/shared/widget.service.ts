@@ -15,21 +15,6 @@ export class HelpWidgetService {
     return this._pageDefaultKey;
   }
 
-  public increaseDisabledCount(): void {
-    this.disabledCount++;
-    this.disableWidget();
-  }
-
-  public decreaseDisabledCount(): void {
-    if (this.disabledCount > 0) {
-      this.disabledCount--;
-    }
-
-    if (this.disabledCount === 0) {
-      this.enableWidget();
-    }
-  }
-
   public setPageDefaultKey(defaultKey: string): void {
     this.pageDefaultKey = defaultKey;
     this.setCurrentHelpKey(this.pageDefaultKey);
@@ -69,15 +54,24 @@ export class HelpWidgetService {
   }
 
   public disableWidget(): Promise<any> {
+    this.disabledCount++;
     return this.executeWhenClientReady(() => {
       BBHelpClient.disableWidget();
     });
   }
 
   public enableWidget(): Promise<any> {
-    return this.executeWhenClientReady(() => {
-      BBHelpClient.enableWidget();
-    });
+    if (this.disabledCount > 0) {
+      this.disabledCount--;
+    }
+
+    if (this.disabledCount === 0) {
+      return this.executeWhenClientReady(() => {
+        BBHelpClient.enableWidget();
+      });
+    }
+
+    return Promise.resolve();
   }
 
   public executeWhenClientReady(callBack: any): Promise<any> {

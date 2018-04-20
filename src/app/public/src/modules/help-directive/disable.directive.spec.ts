@@ -13,25 +13,18 @@ import { HelpBBHelpTestComponent } from './fixtures/help.component.fixture';
 class MockWidgetService {
   public disabledCount: number = 0;
 
-  public increaseDisabledCount(): void {
+  public disableWidget(): void {
     this.disabledCount++;
   }
 
-  public decreaseDisabledCount(): void {
+  public enableWidget(): void {
     if (this.disabledCount > 0) {
       this.disabledCount--;
     }
   }
-
-  public disableWidget(): void {
-  }
-
-  public enableWidget(): void {
-  }
 }
 
 describe('BBHelpDisableWidgetDirective', () => {
-  let component: HelpBBHelpTestComponent;
   let fixture: ComponentFixture<HelpBBHelpTestComponent>;
   let mockWidgetService: MockWidgetService;
   let directiveElement: any;
@@ -51,23 +44,22 @@ describe('BBHelpDisableWidgetDirective', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(HelpBBHelpTestComponent);
-    component = fixture.componentInstance;
     directiveElement = fixture.debugElement.query(By.directive(BBHelpDisableWidgetDirective));
   });
 
-  it('should call increaseDisabledCount on init when disableWidget is true ', () => {
+  it('should call disableWidget on init when disableWidget is true ', () => {
     let directiveInstance = directiveElement.injector.get(BBHelpDisableWidgetDirective);
-    spyOn(mockWidgetService, 'increaseDisabledCount').and.callThrough();
+    spyOn(mockWidgetService, 'disableWidget').and.callThrough();
     directiveInstance.ngOnInit();
-    expect(mockWidgetService.increaseDisabledCount).toHaveBeenCalled();
+    expect(mockWidgetService.disableWidget).toHaveBeenCalled();
     expect(mockWidgetService.disabledCount).toEqual(1);
   });
 
-  it('should call decreaseDisabledCount on destroy when disabledWidget is true', () => {
+  it('should call enableWidget on destroy when disabledWidget is true', () => {
     let directiveInstance = directiveElement.injector.get(BBHelpDisableWidgetDirective);
-    spyOn(mockWidgetService, 'decreaseDisabledCount').and.callThrough();
+    spyOn(mockWidgetService, 'enableWidget').and.callThrough();
     directiveInstance.ngOnDestroy();
-    expect(mockWidgetService.decreaseDisabledCount).toHaveBeenCalled();
+    expect(mockWidgetService.enableWidget).toHaveBeenCalled();
     expect(mockWidgetService.disabledCount).toEqual(0);
   });
 });
