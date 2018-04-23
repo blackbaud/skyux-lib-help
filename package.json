@@ -17,7 +17,7 @@
   "author": "Blackbaud",
   "license": "ISC",
   "dependencies": {
-    "@blackbaud/help-client": "1.2.0"
+    "@blackbaud/help-client": "1.2.1"
   },
   "devDependencies": {
     "@blackbaud/skyux-builder": "1.14.0",

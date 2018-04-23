@@ -98,6 +98,18 @@ describe('BBHelpClientService', () => {
     dataService.openWidget()
       .then(() => {
         expect(spyHelp).toHaveBeenCalled();
+        expect(spyHelp).toHaveBeenCalledWith(undefined);
+      });
+  });
+
+  it('should call the helpClient\'s openWidget method with a helpKey', () => {
+    let spyHelp = spyOn(BBHelpClient, 'openWidget').and.callFake(() => { });
+    resolvePromise = true;
+    let testKey = 'foo.html'
+
+    dataService.openWidget(testKey)
+      .then(() => {
+        expect(spyHelp).toHaveBeenCalledWith(testKey);
       });
   });
 
@@ -160,4 +172,11 @@ describe('BBHelpClientService', () => {
     expect(dataService.disabledCount).toEqual(0);
     expect(spyHelpEnable).toHaveBeenCalled();
   }));
+
+  it('should provide a ready check for async methods', fakeAsync(() => {
+    dataService.ready()
+      .then(() => {
+        expect(BBHelpClient.ready).toHaveBeenCalled();
+      });
+  }))
 });

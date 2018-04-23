@@ -41,9 +41,9 @@ export class HelpWidgetService {
     BBHelpClient.toggleOpen();
   }
 
-  public openWidget(): Promise<any> {
+  public openWidget(helpKey?: string): Promise<any> {
     return this.executeWhenClientReady(() => {
-      BBHelpClient.openWidget();
+      BBHelpClient.openWidget(helpKey);
     });
   }
 
@@ -72,6 +72,10 @@ export class HelpWidgetService {
     }
 
     return Promise.resolve();
+  }
+
+  public ready(): Promise<any> {
+    return BBHelpClient.ready();
   }
 
   public executeWhenClientReady(callBack: any): Promise<any> {
