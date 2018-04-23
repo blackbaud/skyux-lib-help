@@ -86,9 +86,7 @@ describe('BBHelpClientService', () => {
     resolvePromise = false;
 
     dataService.openWidget()
-      .then(() => {
-
-      })
+      .then(() => {})
       .catch((error: string) => {
         expect(spyHelp).not.toHaveBeenCalled();
         expect(error).toEqual('reason');
