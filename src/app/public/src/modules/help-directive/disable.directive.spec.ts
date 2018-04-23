@@ -24,7 +24,7 @@ class MockWidgetService {
   }
 }
 
-describe('BBHelpDisableWidgetDirective', () => {
+describe('bbHelpDisableWidget Directive', () => {
   let fixture: ComponentFixture<HelpBBHelpTestComponent>;
   let mockWidgetService: MockWidgetService;
   let directiveElement: any;

@@ -3,7 +3,7 @@ import { Directive, OnInit, OnDestroy } from '@angular/core';
 import { HelpWidgetService } from '../shared';
 
 @Directive({
-  selector: '[bbHelp-disableWidget]'
+  selector: '[bbHelpDisableWidget]'
 })
 export class BBHelpDisableWidgetDirective implements OnInit, OnDestroy {
 constructor(
