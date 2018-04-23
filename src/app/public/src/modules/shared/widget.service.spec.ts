@@ -87,7 +87,12 @@ describe('BBHelpClientService', () => {
 
     dataService.openWidget()
       .then(() => {
+
+      })
+      .catch((error: string) => {
+        console.log(error);
         expect(spyHelp).not.toHaveBeenCalled();
+        expect(error).toEqual('reason');
       });
   });
 
@@ -129,12 +134,17 @@ describe('BBHelpClientService', () => {
   });
 
   it('should increase the disableCount each time disableWidget is called', fakeAsync(() => {
+    let spyHelp = spyOn(BBHelpClient, 'disableWidget').and.callFake(() => { });
     expect(dataService.disabledCount).toEqual(0);
     dataService.disableWidget();
+    tick(1000);
     expect(dataService.disabledCount).toEqual(1);
     dataService.disableWidget();
+    tick(1000);
     dataService.disableWidget();
+    tick(1000);
     expect(dataService.disabledCount).toEqual(3);
+    expect(spyHelp).toHaveBeenCalledTimes(3);
   }));
 
   it('should enable the HelpWidget when the disabledCount decreases below 1', fakeAsync(() => {
