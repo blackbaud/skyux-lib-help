@@ -105,7 +105,7 @@ describe('BBHelpClientService', () => {
   it('should call the helpClient\'s openWidget method with a helpKey', () => {
     let spyHelp = spyOn(BBHelpClient, 'openWidget').and.callFake(() => { });
     resolvePromise = true;
-    let testKey = 'foo.html'
+    let testKey = 'foo.html';
 
     dataService.openWidget(testKey)
       .then(() => {
@@ -178,5 +178,5 @@ describe('BBHelpClientService', () => {
       .then(() => {
         expect(BBHelpClient.ready).toHaveBeenCalled();
       });
-  }))
+  }));
 });
