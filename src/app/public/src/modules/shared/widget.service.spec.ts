@@ -90,7 +90,6 @@ describe('BBHelpClientService', () => {
 
       })
       .catch((error: string) => {
-        console.log(error);
         expect(spyHelp).not.toHaveBeenCalled();
         expect(error).toEqual('reason');
       });
