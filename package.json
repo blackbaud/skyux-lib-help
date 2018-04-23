@@ -17,11 +17,11 @@
   "author": "Blackbaud",
   "license": "ISC",
   "dependencies": {
-    "@blackbaud/help-client": "1.1.0"
+    "@blackbaud/help-client": "1.2.0"
   },
   "devDependencies": {
-    "@blackbaud/skyux-builder": "^1.0.2",
-    "@blackbaud/skyux": "^2.0.0"
+    "@blackbaud/skyux-builder": "1.14.0",
+    "@blackbaud/skyux": "2.11.0"
   },
   "repository": {
     "type": "git",
