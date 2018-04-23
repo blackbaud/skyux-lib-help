@@ -79,7 +79,7 @@ export class HelpWidgetService {
   }
 
   public executeWhenClientReady(callBack: any): Promise<any> {
-    return BBHelpClient.ready()
+    return this.ready()
       .then(() => {
         return callBack();
       })
