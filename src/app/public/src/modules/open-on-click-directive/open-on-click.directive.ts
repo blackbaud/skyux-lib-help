@@ -13,7 +13,6 @@ export class BBHelpOpenOnClickDirective {
 
   @HostListener('click', ['$event'])
   public onClick(event: MouseEvent): boolean {
-    console.log(this.bbHelpOpenOnClick);
     event.preventDefault();
     event.stopPropagation();
     this.widgetService.openWidget(this.bbHelpOpenOnClick);
