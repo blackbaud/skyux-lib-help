@@ -4,6 +4,8 @@ import { BBHelpModule } from './public';
 
 import { SkyModalDemoFormComponent, HelpWindowRef } from './lib';
 
+require('style-loader!./styles.scss');
+
 // Specify entry components, module-level providers, etc. here.
 @NgModule({
   imports: [
