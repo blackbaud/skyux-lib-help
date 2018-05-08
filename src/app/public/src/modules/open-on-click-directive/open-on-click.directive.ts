@@ -19,11 +19,11 @@ export class BBHelpOpenOnClickDirective {
 
   @HostListener('click', ['$event'])
   @HostListener('keydown', ['$event'])
-  public onFocusEvent(event: any): boolean {
+  public onFocusEvent(event: MouseEvent | KeyboardEvent): boolean {
     let openWidget = (event.type === 'click');
-    // Enter key or click events trigger the widget.
-    if (event.key && event.key.toLowerCase() === 'enter') {
-      openWidget = true;
+
+    if(event instanceof KeyboardEvent) {
+      openWidget = (event.key.toLocaleLowerCase() === 'enter');
     }
 
     if (openWidget) {
