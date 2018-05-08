@@ -42,4 +42,40 @@ describe('bbHelpDisableWidget Directive', () => {
       expect(openSpy).toHaveBeenCalledWith('foo.html');
     });
   }));
+
+  it('should call the widget service open method on enter keypress', fakeAsync(() => {
+    let aTag = fixture.debugElement.nativeElement.querySelector('a');
+    let openSpy = spyOn(mockWidgetService, 'openWidget').and.callThrough();
+    const enterEvent = new KeyboardEvent('keydown', {code : 'Enter'});
+
+    fixture.detectChanges();
+    aTag.dispatchEvent(enterEvent);
+    fixture.whenStable().then(() => {
+      expect(openSpy).toHaveBeenCalledWith('foo.html');
+    });
+  }));
+
+  it('should call the widget service open method on space keypress', fakeAsync(() => {
+    let aTag = fixture.debugElement.nativeElement.querySelector('a');
+    let openSpy = spyOn(mockWidgetService, 'openWidget').and.callThrough();
+    const spaceEvent = new KeyboardEvent('keydown', {code : 'Space'});
+
+    fixture.detectChanges();
+    aTag.dispatchEvent(spaceEvent);
+    fixture.whenStable().then(() => {
+      expect(openSpy).toHaveBeenCalledWith('foo.html');
+    });
+  }));
+
+  it('should call the widget service open method on enter keypress', fakeAsync(() => {
+    let aTag = fixture.debugElement.nativeElement.querySelector('a');
+    let openSpy = spyOn(mockWidgetService, 'openWidget').and.callThrough();
+    const tabEvent = new KeyboardEvent('keydown', {code : 'Tab'});
+
+    fixture.detectChanges();
+    aTag.dispatchEvent(tabEvent);
+    fixture.whenStable().then(() => {
+      expect(openSpy).not.toHaveBeenCalled();
+    });
+  }));
 });

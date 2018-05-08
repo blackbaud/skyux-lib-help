@@ -17,10 +17,15 @@ export class BBHelpOpenOnClickDirective {
   }
 
   @HostListener('click', ['$event'])
-  public onClick(event: MouseEvent): boolean {
-    event.preventDefault();
-    event.stopPropagation();
-    this.widgetService.openWidget(this.bbHelpOpenOnClick);
-    return false;
+  @HostListener('keydown', ['$event'])
+  public onClick(event: any): boolean {
+    let keyPressed = (event.code) ? event.code.toLowerCase() : false;
+
+    if (keyPressed === false || keyPressed === 'enter' || keyPressed === 'space') {
+      this.widgetService.openWidget(this.bbHelpOpenOnClick);
+      return false;
+    }
+
+    return true;
   }
 }
