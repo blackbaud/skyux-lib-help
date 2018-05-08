@@ -18,14 +18,21 @@ export class BBHelpOpenOnClickDirective {
 
   @HostListener('click', ['$event'])
   @HostListener('keydown', ['$event'])
-  public onClick(event: any): boolean {
-    let keyPressed = (event.code) ? event.code.toLowerCase() : false;
-
-    if (keyPressed === false || keyPressed === 'enter' || keyPressed === 'space') {
-      this.widgetService.openWidget(this.bbHelpOpenOnClick);
-      return false;
+  public onFocusEvent(event: any): boolean {
+    let openWidget = (event.type === 'click');
+    // Enter key or click events trigger the widget.
+    if (event.key && event.key.toLowerCase() === 'enter') {
+      openWidget = true;
     }
 
+    if (openWidget) {
+      this.openWidget();
+      return false;
+    }
     return true;
+  }
+
+  private openWidget(): void {
+    this.widgetService.openWidget(this.bbHelpOpenOnClick);
   }
 }
