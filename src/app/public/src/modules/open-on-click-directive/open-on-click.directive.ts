@@ -22,7 +22,7 @@ export class BBHelpOpenOnClickDirective {
   public onFocusEvent(event: MouseEvent | KeyboardEvent): boolean {
     let openWidget = (event.type === 'click');
 
-    if(event instanceof KeyboardEvent) {
+    if (event instanceof KeyboardEvent) {
       openWidget = (event.key.toLocaleLowerCase() === 'enter');
     }
 
