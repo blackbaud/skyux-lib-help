@@ -12,7 +12,8 @@ export class BBHelpOpenOnClickDirective {
   constructor (
     private widgetService: HelpWidgetService,
     private elementRef: ElementRef,
-    private renderer: Renderer2) {
+    private renderer: Renderer2
+  ) {
       this.renderer.setStyle(this.elementRef.nativeElement, 'cursor', 'pointer');
   }
 
@@ -29,6 +30,7 @@ export class BBHelpOpenOnClickDirective {
       this.openWidget();
       return false;
     }
+
     return true;
   }
 

@@ -12,7 +12,7 @@ class MockWidgetService {
   public openWidget(helpKey: string): void { }
 }
 
-fdescribe('bbHelpDisableWidget Directive', () => {
+describe('bbHelpDisableWidget Directive', () => {
   let fixture: ComponentFixture<HelpBBHelpTestComponent>;
   let mockWidgetService: MockWidgetService;
 
