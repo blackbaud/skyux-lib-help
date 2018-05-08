@@ -18,20 +18,17 @@ export class BBHelpOpenOnClickDirective {
   }
 
   @HostListener('click', ['$event'])
+  public onClick(event: MouseEvent): void {
+    this.openWidget();
+    event.preventDefault();
+  }
+
   @HostListener('keydown', ['$event'])
-  public onFocusEvent(event: MouseEvent | KeyboardEvent): boolean {
-    let openWidget = (event.type === 'click');
-
-    if (event instanceof KeyboardEvent) {
-      openWidget = (event.key.toLocaleLowerCase() === 'enter');
-    }
-
-    if (openWidget) {
+  public onKeydown(event: KeyboardEvent): void {
+    if (event.key.toLocaleLowerCase() === 'enter') {
       this.openWidget();
-      return false;
+      event.preventDefault();
     }
-
-    return true;
   }
 
   private openWidget(): void {
