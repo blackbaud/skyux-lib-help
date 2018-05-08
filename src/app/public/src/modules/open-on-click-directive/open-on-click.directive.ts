@@ -7,14 +7,14 @@ import { HelpWidgetService } from '../shared';
 })
 export class BBHelpOpenOnClickDirective {
   @Input()
-  private bbHelpOpenOnClick: string;
+  public bbHelpOpenOnClick: string;
 
   constructor (
     private widgetService: HelpWidgetService,
     private elementRef: ElementRef,
     private renderer: Renderer2
   ) {
-      this.renderer.setStyle(this.elementRef.nativeElement, 'cursor', 'pointer');
+    this.renderer.setStyle(this.elementRef.nativeElement, 'cursor', 'pointer');
   }
 
   @HostListener('click', ['$event'])
