@@ -1,6 +1,6 @@
 {
   "name": "@blackbaud/skyux-lib-help",
-  "version": "1.3.0",
+  "version": "2.0.0-beta",
   "description": "Angular 2 components for SKY UX Builder SPAs",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
@@ -17,11 +17,22 @@
   "author": "Blackbaud",
   "license": "ISC",
   "dependencies": {
-    "@blackbaud/help-client": "1.3.0"
+    "@blackbaud/help-client": "https://github.com/blackbaud/help-client#feature-help-wrapper"
+  },
+  "peerDependencies": {
+    "@angular/common": "^4.0.0",
+    "@angular/compiler": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/forms": "^4.0.0",
+    "@angular/platform-browser": "^4.0.0",
+    "@angular/platform-browser-dynamic": "^4.0.0",
+    "@angular/router": "^4.0.0",
+    "@blackbaud/skyux": "^2.0.0"
   },
   "devDependencies": {
-    "@blackbaud/skyux-builder": "1.14.0",
-    "@blackbaud/skyux": "2.11.0"
+    "@blackbaud/skyux-builder": "1.19.3",
+    "@blackbaud/skyux": "2.22.0",
+    "@blackbaud/skyux-lib-testing": "1.0.0"
   },
   "repository": {
     "type": "git",
