@@ -10,10 +10,13 @@ import { BBHelpClient } from '@blackbaud/help-client';
 export class HelpInitComponent {
   constructor(private initService: HelpInitializationService) {
     BBHelpClient.ready()
-        .then(() => {
-          this.initService.load({
-            extends: 'bbhelp'
+      .then(() => {
+        this.initService.load({
+          extends: 'bbhelp'
         });
+      })
+      .catch((err: any) => {
+        console.log(err);
       });
    }
 }

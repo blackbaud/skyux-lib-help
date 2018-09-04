@@ -1,24 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 
 import { HelpInitComponent } from './init-help.component';
 import { HelpInitializationService } from '../../public';
-
-import { HelpWindowRef } from '../window-ref';
-
-class MockWindowRef {
-  public nativeWindow = {
-    BBHELP: false
-  };
-}
+import { BBHelpClient } from '@blackbaud/help-client';
 
 describe('HelpInitComponent', () => {
   const helpInitService = new HelpInitializationService();
-  let mockWindowRef: MockWindowRef;
   let component: HelpInitComponent;
   let fixture: ComponentFixture<HelpInitComponent>;
 
   beforeEach(() => {
-    mockWindowRef = new MockWindowRef();
     spyOn(helpInitService, 'load').and.callFake((config: any) => { });
 
     TestBed.configureTestingModule({
@@ -29,26 +20,25 @@ describe('HelpInitComponent', () => {
         {
           provide: HelpInitializationService,
           useValue: helpInitService
-        },
-        {
-          provide: HelpWindowRef,
-          useValue: mockWindowRef
         }
       ]
     })
       .compileComponents();
   });
 
-  it('should initialize the help widget on creation if it doesn\'t exist', () => {
+  it('should call load when the BBHelpClient is ready', fakeAsync(() => {
+    spyOn(BBHelpClient, 'ready').and.callFake(() => Promise.resolve());
     fixture = TestBed.createComponent(HelpInitComponent);
     component = fixture.componentInstance;
+    tick(1000);
     expect(helpInitService.load).toHaveBeenCalled();
-  });
+  }));
 
-  it('should not try to call load if the widget already exists', () => {
-    mockWindowRef.nativeWindow.BBHELP = true;
+  it('should not try to call load if the BBHelpClient is not ready', fakeAsync(() => {
+    spyOn(BBHelpClient, 'ready').and.callFake(() => Promise.reject(''));
     fixture = TestBed.createComponent(HelpInitComponent);
     component = fixture.componentInstance;
+    tick(1000);
     expect(helpInitService.load).not.toHaveBeenCalled();
-  });
+  }));
 });
