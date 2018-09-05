@@ -17,7 +17,7 @@
   "author": "Blackbaud",
   "license": "ISC",
   "dependencies": {
-    "@blackbaud/help-client": "https://github.com/blackbaud/help-client#feature-help-wrapper"
+    "@blackbaud/help-client": "blackbaud/help-client#feature-help-wrapper"
   },
   "peerDependencies": {
     "@angular/common": "^4.0.0",
@@ -30,7 +30,7 @@
     "@blackbaud/skyux": "^2.0.0"
   },
   "devDependencies": {
-    "@blackbaud/skyux-builder": "1.19.3",
+    "@blackbaud/skyux-builder": "1.20.0",
     "@blackbaud/skyux": "2.22.0",
     "@blackbaud/skyux-lib-testing": "1.0.0"
   },
