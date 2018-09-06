@@ -47,7 +47,6 @@ describe('bbHelpDisableWidget Directive', () => {
     let aTag = fixture.debugElement.nativeElement.querySelector('a');
     let openSpy = spyOn(mockWidgetService, 'openWidget').and.callThrough();
     const enterEvent = new KeyboardEvent('keydown', {key : 'Enter'});
-    console.log(enterEvent);
     fixture.detectChanges();
     aTag.dispatchEvent(enterEvent);
     fixture.whenStable().then(() => {

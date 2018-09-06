@@ -15,33 +15,42 @@ export class HelpWidgetService {
     return this._pageDefaultKey;
   }
 
-  public setPageDefaultKey(defaultKey: string): void {
+  public setPageDefaultKey(defaultKey: string): Promise<any> {
     this.pageDefaultKey = defaultKey;
-    this.setCurrentHelpKey(this.pageDefaultKey);
+    return this.setCurrentHelpKey(this.pageDefaultKey);
   }
 
-  public setCurrentHelpKey(helpKey: string): void {
-    BBHelpClient.ready()
+  public setCurrentHelpKey(helpKey: string): Promise<any> {
+    return this.ready()
       .then(() => {
         BBHelpClient.setCurrentHelpKey(helpKey);
       });
   }
 
-  public setHelpKeyToPageDefault(): void {
-    BBHelpClient.setCurrentHelpKey(this.pageDefaultKey);
+  public setHelpKeyToPageDefault(): Promise<any> {
+    return this.setCurrentHelpKey(this.pageDefaultKey);
   }
 
-  public openToHelpKey(helpKey: string): void {
-    BBHelpClient.openWidgetToHelpKey(helpKey);
+  public openToHelpKey(helpKey: string): Promise<any> {
+    return this.ready()
+      .then(() => {
+        BBHelpClient.openWidgetToHelpKey(helpKey);
+      });
   }
 
-  public setHelpKeyToGlobalDefault(): void {
-    BBHelpClient.setHelpKeyToDefault();
-    this.pageDefaultKey = '';
+  public setHelpKeyToGlobalDefault(): Promise<any> {
+    return this.ready()
+      .then(() => {
+        BBHelpClient.setHelpKeyToDefault();
+        this.pageDefaultKey = '';
+      });
   }
 
-  public toggleOpen(): void {
-    BBHelpClient.toggleOpen();
+  public toggleOpen(): Promise<any> {
+    return this.ready()
+      .then(() => {
+        BBHelpClient.toggleOpen();
+      });
   }
 
   public openWidget(helpKey?: string): Promise<any> {

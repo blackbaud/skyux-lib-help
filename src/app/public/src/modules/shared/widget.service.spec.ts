@@ -21,21 +21,27 @@ describe('BBHelpClientService', () => {
   it('should call the helpClient\'s setCurrentHelpKey and pass the helpKey to it', () => {
     let helpKey = 'test-key.html';
     let spyHelp = spyOn(BBHelpClient, 'setCurrentHelpKey').and.callFake(() => { });
-    dataService.setCurrentHelpKey(helpKey);
-    expect(spyHelp).toHaveBeenCalledWith(helpKey);
+    dataService.setCurrentHelpKey(helpKey)
+      .then(() => {
+        expect(spyHelp).toHaveBeenCalledWith(helpKey);
+      });
   });
 
   it('should call the helpClient\'s openToHelpKey and pass the helpKey to it', () => {
     let helpKey = 'test-key.html';
     let spyHelp = spyOn(BBHelpClient, 'openWidgetToHelpKey').and.callFake(() => { });
-    dataService.openToHelpKey(helpKey);
-    expect(spyHelp).toHaveBeenCalledWith(helpKey);
+    dataService.openToHelpKey(helpKey)
+      .then(() => {
+        expect(spyHelp).toHaveBeenCalledWith(helpKey);
+      });
   });
 
   it('should call the helpClient\'s setHelpKeyToDefault method', () => {
     let spyHelp = spyOn(BBHelpClient, 'setHelpKeyToDefault').and.callFake(() => { });
-    dataService.setHelpKeyToGlobalDefault();
-    expect(spyHelp).toHaveBeenCalled();
+    dataService.setHelpKeyToGlobalDefault()
+      .then(() => {
+        expect(spyHelp).toHaveBeenCalled();
+      });
   });
 
   it('should store a pageDefaultKey', () => {
@@ -48,8 +54,10 @@ describe('BBHelpClientService', () => {
   it('should call the helpClient\'s setCurrentHelpKey with the pageDefaultKey when it is defined', () => {
     let pageDefaultKey = 'page-default-key.html';
     let spyHelp = spyOn(BBHelpClient, 'setCurrentHelpKey').and.callFake(() => { });
-    dataService.setPageDefaultKey(pageDefaultKey);
-    expect(spyHelp).toHaveBeenCalledWith(pageDefaultKey);
+    dataService.setPageDefaultKey(pageDefaultKey)
+      .then(() => {
+        expect(spyHelp).toHaveBeenCalledWith(pageDefaultKey);
+      });
   });
 
   it('should remove the pageDefaultKey and call the helpClient\'s setHelpKeyToDefault method', () => {
@@ -58,9 +66,11 @@ describe('BBHelpClientService', () => {
     dataService.setPageDefaultKey(defaultPageKey);
 
     expect(dataService.pageDefaultKey).toEqual(defaultPageKey);
-    dataService.setHelpKeyToGlobalDefault();
-    expect(dataService.pageDefaultKey).toEqual('');
-    expect(spyHelp).toHaveBeenCalled();
+    dataService.setHelpKeyToGlobalDefault()
+      .then(() => {
+        expect(dataService.pageDefaultKey).toEqual('');
+        expect(spyHelp).toHaveBeenCalled();
+      });
   });
 
   it('should call the helpClient\'s setCurrentHelpKey with the pageDefaultKey', () => {
@@ -68,9 +78,10 @@ describe('BBHelpClientService', () => {
     let spyHelp = spyOn(BBHelpClient, 'setCurrentHelpKey').and.callFake(() => { });
 
     dataService.pageDefaultKey = defaultPageKey;
-    dataService.setHelpKeyToPageDefault();
-
-    expect(spyHelp).toHaveBeenCalledWith(defaultPageKey);
+    dataService.setHelpKeyToPageDefault()
+      .then(() => {
+        expect(spyHelp).toHaveBeenCalledWith(defaultPageKey);
+      });
   });
 
   it('should see if the client is ready before calling async methods', fakeAsync(() => {
@@ -126,8 +137,10 @@ describe('BBHelpClientService', () => {
 
   it('should call the helpClient\'s toggleOpen method', () => {
     let spyHelp = spyOn(BBHelpClient, 'toggleOpen').and.callFake(() => { });
-    dataService.toggleOpen();
-    expect(spyHelp).toHaveBeenCalled();
+    dataService.toggleOpen()
+      .then(() => {
+        expect(spyHelp).toHaveBeenCalled();
+      });
   });
 
   it('should increase the disableCount each time disableWidget is called', fakeAsync(() => {
