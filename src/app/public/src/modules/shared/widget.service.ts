@@ -21,7 +21,10 @@ export class HelpWidgetService {
   }
 
   public setCurrentHelpKey(helpKey: string): void {
-    BBHelpClient.setCurrentHelpKey(helpKey);
+    BBHelpClient.ready()
+      .then(() => {
+        BBHelpClient.setCurrentHelpKey(helpKey);
+      });
   }
 
   public setHelpKeyToPageDefault(): void {
