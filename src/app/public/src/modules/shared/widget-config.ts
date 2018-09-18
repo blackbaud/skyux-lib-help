@@ -1,4 +1,5 @@
 export interface HelpWidgetConfig {
+  authEnabled?: boolean;
   caseCentralUrl?: string;
   communityUrl?: string;
   customLocales?: string[];
@@ -13,6 +14,7 @@ export interface HelpWidgetConfig {
   hideHelpChat?: boolean | string;
   hideUndock?: boolean | string;
   hideWidgetOnMobile?: boolean;
+  hostQueryParams?: string;
   knowledgebaseUrl?: string;
   locale?: string;
   productId?: string;
@@ -20,5 +22,4 @@ export interface HelpWidgetConfig {
   trainingCentralUrl?: string;
   useFlareSearch?: boolean;
   whatsNewRevisions?: any;
-  hostQueryParams?: string;
 }
