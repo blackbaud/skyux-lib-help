@@ -1,20 +1,24 @@
 export interface HelpWidgetConfig {
-  extends?: string;
-  productId?: string;
-  defaultHelpKey?: string;
-  locale?: string;
-  helpBaseUrl?: string;
+  caseCentralUrl?: string;
+  communityUrl?: string;
   customLocales?: string[];
+  defaultHelpKey?: string;
+  extends?: string;
+  getChatData?: any;
+  getCurrentHelpKey?: any;
   headerColor?: string;
   headerTextColor?: string;
-  trainingCentralUrl?: string;
-  knowledgeBaseUrl?: string;
-  caseCentralUrl?: string;
-  helpCentralUrl?: string;
-  hideUndock?: boolean;
+  helpBaseUrl?: string;
+  helpCenterUrl?: string;
+  hideHelpChat?: boolean | string;
+  hideUndock?: boolean | string;
   hideWidgetOnMobile?: boolean;
-  hideHelpChat?: boolean;
+  knowledgebaseUrl?: string;
+  locale?: string;
+  productId?: string;
+  searchService?: string;
+  trainingCentralUrl?: string;
   useFlareSearch?: boolean;
-  getChatData?: any;
-  authEnabled?: boolean;
+  whatsNewRevisions?: any;
+  hostQueryParams?: string;
 }
