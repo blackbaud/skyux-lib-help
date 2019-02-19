@@ -5,7 +5,7 @@
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
   "engines": {
-    "node": ">=6.11.1"
+    "node": ">=10.15.1"
   },
   "scripts": {
     "skyux": "skyux",
