@@ -19,6 +19,7 @@ jspm_packages
 # SKY UX temp directory
 .skyuxtmp
 .srctmp
+.skypagestmp
 
 # SKY UX build directory
 dist
@@ -29,6 +30,9 @@ dist
 # Editor specific files
 .vscode
 .vs
+
+# NPM lock file
+package-lock.json
 
 *.ngfactory.ts
 *.ngsummary.json
