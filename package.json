@@ -16,8 +16,10 @@
   "keywords": [],
   "author": "Blackbaud",
   "license": "ISC",
-  "dependencies": {
-    "@blackbaud/help-client": "2.0.0-beta.5"
+  "peerDependencies": {
+    "@angular/common": ">=4.3.6",
+    "@angular/core": ">=4.3.6",
+    "@blackbaud/help-client": "^2.0.0-beta.5"
   },
   "devDependencies": {
     "@angular/animations": "7.2.2",
@@ -31,6 +33,7 @@
     "@angular/platform-browser-dynamic": "7.2.2",
     "@angular/router": "7.2.2",
     "@blackbaud/auth-client": "2.13.0",
+    "@blackbaud/help-client": "2.0.0-beta.5",
     "@pact-foundation/pact-web": "7.2.0",
     "@skyux-sdk/builder": "3.2.2",
     "@skyux-sdk/pact": "3.2.0",
@@ -57,9 +60,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/blackbaud/skyux-lib-help.git"
-  },
-  "peerDependencies": {
-    "@skyux-sdk/builder": "^3.2.2",
-    "@skyux/modals": "^3.0.1"
   }
 }
