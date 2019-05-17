@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { TestButtonComponent } from './test-button.component';
-import { HelpWidgetService } from '../../public/src/modules/shared';
+import { HelpWidgetService } from '../../public/';
 
 describe('TestButtonComponent', () => {
   let component: TestButtonComponent;

@@ -41,10 +41,4 @@ describe('HelpInitComponent', () => {
     TestBed.createComponent(HelpInitComponent);
     expect(helpInitService.load).toHaveBeenCalled();
   });
-
-  it('should not try to call load if the widget already exists', () => {
-    mockWindowRef.nativeWindow.BBHELP = true;
-    TestBed.createComponent(HelpInitComponent);
-    expect(helpInitService.load).not.toHaveBeenCalled();
-  });
 });

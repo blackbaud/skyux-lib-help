@@ -1,7 +1,15 @@
-import { BBHelpClient } from '@blackbaud/help-client';
+import {
+  BBHelpClient
+} from '@blackbaud/help-client';
 
-import { HelpWidgetService } from './widget.service';
-import { fakeAsync, tick } from '@angular/core/testing';
+import {
+  HelpWidgetService
+} from './widget.service';
+
+import {
+  fakeAsync,
+  tick
+} from '@angular/core/testing';
 
 describe('BBHelpClientService', () => {
   let dataService = new HelpWidgetService();

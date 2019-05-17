@@ -1,7 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed
+} from '@angular/core/testing';
 
-import { HelpKeyComponent } from './help-key.component';
-import { HelpWidgetService } from '../shared';
+import {
+  HelpKeyModule
+} from './help-key.module';
+
+import {
+  HelpKeyComponent
+} from './help-key.component';
+
+import {
+  HelpWidgetService
+} from '../shared/widget.service';
 
 describe('HelpKeyComponent', () => {
   let component: HelpKeyComponent;
@@ -22,8 +34,8 @@ describe('HelpKeyComponent', () => {
     mockWidgetService = new MockWidgetService();
 
     TestBed.configureTestingModule({
-      declarations: [
-        HelpKeyComponent
+      imports: [
+        HelpKeyModule
       ],
       providers: [
         { provide: HelpWidgetService, useValue: mockWidgetService }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { HelpWidgetService } from '../../public/src/modules/shared';
+import { HelpWidgetService } from '../../public';
 
 @Component({
   selector: 'toggle-widget',

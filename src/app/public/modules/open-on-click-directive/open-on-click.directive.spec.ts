@@ -1,9 +1,24 @@
-import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync
+} from '@angular/core/testing';
 
-import { HelpWidgetService } from '../shared';
+import {
+  HelpWidgetService
+} from '../shared/widget.service';
 
-import { HelpBBHelpTestComponent } from './fixtures/help.component.fixture';
-import { OpenOnClickDirectiveFixturesModule } from './fixtures/open-on-click-directive-fixtures.module';
+import {
+  HelpModule
+} from '../help/help.module';
+
+import {
+  HelpBBHelpTestComponent
+} from './fixtures/help.component.fixture';
+
+import {
+  OpenOnClickDirectiveModule
+} from './open-on-click.module';
 
 class MockWidgetService {
   public openWidget(helpKey: string): void { }
@@ -17,11 +32,15 @@ describe('bbHelpDisableWidget Directive', () => {
     mockWidgetService = new MockWidgetService();
 
     TestBed.configureTestingModule({
+      declarations: [
+        HelpBBHelpTestComponent
+      ],
       providers: [
         { provide: HelpWidgetService, useValue: mockWidgetService }
       ],
       imports: [
-        OpenOnClickDirectiveFixturesModule
+        HelpModule,
+        OpenOnClickDirectiveModule
       ]
     }).compileComponents();
 

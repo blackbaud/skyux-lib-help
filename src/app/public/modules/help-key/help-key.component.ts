@@ -1,6 +1,13 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnDestroy
+} from '@angular/core';
 
-import { HelpWidgetService } from '../shared';
+import {
+  HelpWidgetService
+} from '../shared/widget.service';
+
 @Component({
   selector: 'bb-help-key',
   template: ''
@@ -32,7 +39,8 @@ export class HelpKeyComponent implements OnDestroy {
   }
 
   constructor(
-    private widgetService: HelpWidgetService) { }
+    private widgetService: HelpWidgetService
+  ) {}
 
   public ngOnDestroy() {
     if (this.pageDefaultKey || !this.widgetService.pageDefaultKey) {
