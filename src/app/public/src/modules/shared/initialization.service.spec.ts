@@ -14,7 +14,7 @@ describe('Initialization Service', () => {
     spyOn(BBHelpClient, 'ready').and.callFake((config: any) => Promise.resolve()).and.callThrough();
   });
 
-  it('should call the Client\'s load method with the config passed to the service', async () => {
+  it('should call the Client\'s load method with the config passed to the service', () => {
     const mockConfig = { 'productId': 'test_id' };
     initializationService.load(mockConfig);
     BBHelpClient.ready().then(() => {
