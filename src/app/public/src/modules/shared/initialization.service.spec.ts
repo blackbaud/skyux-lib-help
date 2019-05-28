@@ -11,7 +11,7 @@ describe('Initialization Service', () => {
 
   beforeEach(() => {
     spyOn(BBHelpClient, 'load').and.callFake((config: any) => { });
-    spyOn(BBHelpClient, 'ready').and.callFake((config: any) => Promise.resolve()).and.callThrough();
+    spyOn(BBHelpClient, 'ready').and.callFake((config: any) => Promise.resolve());
   });
 
   it('should call the Client\'s load method with the config passed to the service', () => {
