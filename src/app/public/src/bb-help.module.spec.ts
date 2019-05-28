@@ -1,4 +1,6 @@
-import { BBHelpModule } from './bb-help.module';
+import {
+  BBHelpModule
+} from './bb-help.module';
 
 describe('BBHelpModule', () => {
   it('should export', () => {

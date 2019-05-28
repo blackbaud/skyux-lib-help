@@ -1,4 +1,6 @@
-import { AppExtrasModule } from './app-extras.module';
+import {
+  AppExtrasModule
+} from './app-extras.module';
 
 describe('AppExtrasModule', () => {
   it('should export', () => {

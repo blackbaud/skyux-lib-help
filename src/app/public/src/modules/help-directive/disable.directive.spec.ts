@@ -1,13 +1,27 @@
-import { By } from '@angular/platform-browser';
+import {
+  By
+} from '@angular/platform-browser';
 
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed
+} from '@angular/core/testing';
 
-import { BBHelpDisableWidgetDirective } from './disable.directive';
+import {
+  BBHelpDisableWidgetDirective
+} from './disable.directive';
 
-import { HelpWidgetService } from '../shared';
+import {
+  HelpWidgetService
+} from '../shared';
 
-import { HelpBBHelpTestComponent } from './fixtures/help.component.fixture';
-import { DisableDirectiveFixturesModule } from './fixtures/disable-directive-fixtures.module';
+import {
+  HelpBBHelpTestComponent
+} from './fixtures/help.component.fixture';
+
+import {
+  DisableDirectiveFixturesModule
+} from './fixtures/disable-directive-fixtures.module';
 
 class MockWidgetService {
   public disabledCount: number = 0;

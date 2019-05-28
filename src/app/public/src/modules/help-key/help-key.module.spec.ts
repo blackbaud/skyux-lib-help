@@ -1,4 +1,6 @@
-import { HelpKeyModule } from './help-key.module';
+import {
+  HelpKeyModule
+} from './help-key.module';
 
 describe('HelpKeyModule', () => {
   it('should export', () => {

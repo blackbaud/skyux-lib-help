@@ -1,6 +1,14 @@
-import { Injectable } from '@angular/core';
-import { BBHelpClient } from '@blackbaud/help-client';
-import { HelpWidgetConfig } from './widget-config';
+import {
+  Injectable
+} from '@angular/core';
+
+import {
+  BBHelpClient
+} from '@blackbaud/help-client';
+
+import {
+  HelpWidgetConfig
+} from './widget-config';
 
 @Injectable()
 export class HelpInitializationService {

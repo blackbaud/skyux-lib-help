@@ -1,4 +1,6 @@
-import { HelpModule } from './help.module';
+import {
+  HelpModule
+} from './help.module';
 
 describe('HelpModule', () => {
   it('should export', () => {

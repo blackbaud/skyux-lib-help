@@ -1,4 +1,6 @@
-import { BBHelpSharedModule } from './shared.module';
+import {
+  BBHelpSharedModule
+} from './shared.module';
 
 describe('BBHelpSharedModule', () => {
   it('should export', () => {

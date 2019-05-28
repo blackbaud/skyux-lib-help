@@ -1,7 +1,14 @@
-import { NgModule } from '@angular/core';
+import {
+  NgModule
+} from '@angular/core';
 
-import { HelpBBHelpTestComponent } from './help.component.fixture';
-import { BBHelpModule } from '../../../..';
+import {
+  HelpBBHelpTestComponent
+} from './help.component.fixture';
+
+import {
+  BBHelpModule
+} from '../../../..';
 
 @NgModule({
   declarations: [

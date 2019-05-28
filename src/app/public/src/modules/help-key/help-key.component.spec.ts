@@ -1,7 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed
+} from '@angular/core/testing';
 
-import { HelpKeyComponent } from './help-key.component';
-import { HelpWidgetService } from '../shared';
+import {
+  HelpKeyComponent
+} from './help-key.component';
+
+import {
+  HelpWidgetService
+} from '../shared';
 
 describe('HelpKeyComponent', () => {
   let component: HelpKeyComponent;
@@ -10,12 +18,12 @@ describe('HelpKeyComponent', () => {
 
   class MockWidgetService {
     public pageDefaultKey: string;
-    public setCurrentHelpKey = jasmine.createSpy('setCurrentHelpKey').and.callFake(() => {});
+    public setCurrentHelpKey = jasmine.createSpy('setCurrentHelpKey').and.callFake(() => { });
     public setPageDefaultKey = jasmine.createSpy('setPageDefaultKey').and.callFake((helpKey: string) => {
       this.pageDefaultKey = helpKey;
     });
-    public setHelpKeyToPageDefault = jasmine.createSpy('setHelpKeyToPageDefault').and.callFake(() => {});
-    public setHelpKeyToGlobalDefault = jasmine.createSpy('setHelpKeyToGlobalDefault').and.callFake(() => {});
+    public setHelpKeyToPageDefault = jasmine.createSpy('setHelpKeyToPageDefault').and.callFake(() => { });
+    public setHelpKeyToGlobalDefault = jasmine.createSpy('setHelpKeyToGlobalDefault').and.callFake(() => { });
   }
 
   beforeEach(() => {
