@@ -48,9 +48,9 @@ export class HelpWidgetService {
 
   public openWidget(helpKey?: string): Promise<any> {
     return this.ready()
-    .then(() => {
-      BBHelpClient.openWidget(helpKey);
-    });
+      .then(() => {
+        BBHelpClient.openWidget(helpKey);
+      });
   }
 
   public closeWidget(): Promise<any> {

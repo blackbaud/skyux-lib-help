@@ -27,7 +27,7 @@ export class HelpKeyComponent implements OnDestroy {
   }
 
   @Input()
-  set helpKey (helpKey: string) {
+  set helpKey(helpKey: string) {
     this._helpKey = helpKey;
     if (!this.pageDefaultKey) {
       this.widgetService.setCurrentHelpKey(this.helpKey);

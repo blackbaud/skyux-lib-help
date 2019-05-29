@@ -1,9 +1,18 @@
-import { TestBed } from '@angular/core/testing';
+import {
+  TestBed
+} from '@angular/core/testing';
 
-import { HelpInitComponent } from './init-help.component';
-import { HelpInitializationService } from '../../public';
+import {
+  HelpInitComponent
+} from './init-help.component';
 
-import { HelpWindowRef } from '../window-ref';
+import {
+  HelpInitializationService
+} from '../../public';
+
+import {
+  HelpWindowRef
+} from '../window-ref';
 
 class MockWindowRef {
   public nativeWindow = {

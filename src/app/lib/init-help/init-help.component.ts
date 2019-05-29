@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
-import { HelpInitializationService } from '../../public';
+import {
+  Component
+} from '@angular/core';
+
+import {
+  HelpInitializationService
+} from '../../public';
 
 @Component({
   selector: 'init-help',
@@ -8,6 +13,6 @@ import { HelpInitializationService } from '../../public';
 export class HelpInitComponent {
   constructor(
     private initService: HelpInitializationService) {
-      this.initService.load({ extends: 'bbhelp' });
+    this.initService.load({ extends: 'bbhelp' });
   }
 }

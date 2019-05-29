@@ -60,8 +60,7 @@ describe('bbHelpDisableWidget Directive', () => {
   it('should call the widget service open method on enter keypress', fakeAsync(() => {
     let aTag = fixture.debugElement.nativeElement.querySelector('a');
     let openSpy = spyOn(mockWidgetService, 'openWidget').and.callThrough();
-    const enterEvent = new KeyboardEvent('keydown', {key : 'Enter'});
-    console.log(enterEvent);
+    const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
     fixture.detectChanges();
     aTag.dispatchEvent(enterEvent);
     fixture.whenStable().then(() => {
@@ -72,7 +71,7 @@ describe('bbHelpDisableWidget Directive', () => {
   it('should not call the widget service open method on other keypresses', fakeAsync(() => {
     let aTag = fixture.debugElement.nativeElement.querySelector('a');
     let openSpy = spyOn(mockWidgetService, 'openWidget').and.callThrough();
-    const tabEvent = new KeyboardEvent('keydown', {key : 'Tab'});
+    const tabEvent = new KeyboardEvent('keydown', { key: 'Tab' });
 
     fixture.detectChanges();
     aTag.dispatchEvent(tabEvent);
