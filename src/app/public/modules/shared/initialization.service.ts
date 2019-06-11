@@ -13,9 +13,6 @@ import {
 @Injectable()
 export class HelpInitializationService {
   public load(config: HelpWidgetConfig) {
-    BBHelpClient.ready()
-      .then(() => {
-        BBHelpClient.load(config);
-      });
+      return BBHelpClient.load(config);
   }
 }

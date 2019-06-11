@@ -7,13 +7,17 @@ import {
   HelpComponent
 } from './help.component';
 
-describe('BBHelpDirective', () => {
+import {
+  HelpModule
+} from './help.module';
+
+describe('HelpComponent', () => {
   let fixture: ComponentFixture<HelpComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        HelpComponent
+      imports: [
+        HelpModule
       ]
     }).compileComponents();
 

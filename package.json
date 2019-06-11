@@ -16,8 +16,10 @@
   "keywords": [],
   "author": "Blackbaud",
   "license": "ISC",
-  "dependencies": {
-    "@blackbaud/help-client": "2.0.0-beta.5"
+  "peerDependencies": {
+    "@angular/common": ">=4.3.6",
+    "@angular/core": ">=4.3.6",
+    "@blackbaud/help-client": "^2.0.0-beta.5"
   },
   "devDependencies": {
     "@angular/animations": "7.2.2",
@@ -30,21 +32,22 @@
     "@angular/platform-browser": "7.2.2",
     "@angular/platform-browser-dynamic": "7.2.2",
     "@angular/router": "7.2.2",
-    "@blackbaud/auth-client": "2.13.0",
-    "@pact-foundation/pact-web": "7.2.0",
-    "@skyux-sdk/builder": "3.2.2",
+    "@blackbaud/auth-client": "2.14.0",
+    "@blackbaud/help-client": "2.0.0-beta.5",
+    "@pact-foundation/pact-web": "8.2.4",
+    "@skyux-sdk/builder": "3.6.6",
     "@skyux-sdk/pact": "3.2.0",
     "@skyux-sdk/testing": "3.1.0",
     "@skyux/assets": "3.0.0",
-    "@skyux/config": "3.4.0",
-    "@skyux/core": "3.5.1",
-    "@skyux/http": "3.2.0",
-    "@skyux/i18n": "3.5.0",
+    "@skyux/config": "3.5.0",
+    "@skyux/core": "3.5.3",
+    "@skyux/http": "3.3.0",
+    "@skyux/i18n": "3.6.1",
     "@skyux/indicators": "3.0.3",
-    "@skyux/modals": "3.0.1",
+    "@skyux/modals": "3.0.3",
     "@skyux/omnibar-interop": "3.1.0",
-    "@skyux/router": "3.1.0",
-    "@skyux/theme": "3.4.0",
+    "@skyux/router": "3.1.1",
+    "@skyux/theme": "3.6.0",
     "@types/core-js": "2.5.0",
     "codelyzer": "4.5.0",
     "rxjs": "6.3.3",
@@ -57,9 +60,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/blackbaud/skyux-lib-help.git"
-  },
-  "peerDependencies": {
-    "@skyux-sdk/builder": "^3.2.2",
-    "@skyux/modals": "^3.0.1"
   }
 }

@@ -4,7 +4,7 @@ import {
 
 import {
   HelpWidgetService
-} from '../../public/src/modules/shared';
+} from '../../public';
 
 @Component({
   selector: 'toggle-widget',

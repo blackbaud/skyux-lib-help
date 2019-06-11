@@ -4,12 +4,16 @@ import {
 } from '@angular/core/testing';
 
 import {
+  HelpKeyModule
+} from './help-key.module';
+
+import {
   HelpKeyComponent
 } from './help-key.component';
 
 import {
   HelpWidgetService
-} from '../shared';
+} from '../shared/widget.service';
 
 describe('HelpKeyComponent', () => {
   let component: HelpKeyComponent;
@@ -30,8 +34,8 @@ describe('HelpKeyComponent', () => {
     mockWidgetService = new MockWidgetService();
 
     TestBed.configureTestingModule({
-      declarations: [
-        HelpKeyComponent
+      imports: [
+        HelpKeyModule
       ],
       providers: [
         { provide: HelpWidgetService, useValue: mockWidgetService }

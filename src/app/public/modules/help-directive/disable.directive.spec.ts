@@ -13,15 +13,19 @@ import {
 
 import {
   HelpWidgetService
-} from '../shared';
+} from '../shared/widget.service';
+
+import {
+  HelpModule
+} from '../help/help.module';
 
 import {
   HelpBBHelpTestComponent
 } from './fixtures/help.component.fixture';
 
 import {
-  DisableDirectiveFixturesModule
-} from './fixtures/disable-directive-fixtures.module';
+  BBHelpDisableModule
+} from './disable.module';
 
 class MockWidgetService {
   public disabledCount: number = 0;
@@ -46,11 +50,15 @@ describe('bbHelpDisableWidget Directive', () => {
     mockWidgetService = new MockWidgetService();
 
     TestBed.configureTestingModule({
+      declarations: [
+        HelpBBHelpTestComponent
+      ],
       providers: [
         { provide: HelpWidgetService, useValue: mockWidgetService }
       ],
       imports: [
-        DisableDirectiveFixturesModule
+        HelpModule,
+        BBHelpDisableModule
       ]
     }).compileComponents();
 

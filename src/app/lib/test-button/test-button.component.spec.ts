@@ -17,7 +17,7 @@ import {
 
 import {
   HelpWidgetService
-} from '../../public/src/modules/shared';
+} from '../../public/';
 
 describe('TestButtonComponent', () => {
   let component: TestButtonComponent;

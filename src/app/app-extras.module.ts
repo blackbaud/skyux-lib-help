@@ -3,7 +3,8 @@ import {
 } from '@angular/core';
 
 import {
-  BBHelpModule
+  BBHelpModule,
+  HelpInitializationService
 } from './public';
 
 import {
@@ -25,7 +26,8 @@ import {
     BBHelpModule
   ],
   providers: [
-    HelpWindowRef
+    HelpWindowRef,
+    HelpInitializationService
   ],
   entryComponents: [
     SkyModalDemoFormComponent

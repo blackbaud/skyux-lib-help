@@ -6,15 +6,19 @@ import {
 
 import {
   HelpWidgetService
-} from '../shared';
+} from '../shared/widget.service';
+
+import {
+  HelpModule
+} from '../help/help.module';
 
 import {
   HelpBBHelpTestComponent
 } from './fixtures/help.component.fixture';
 
 import {
-  OpenOnClickDirectiveFixturesModule
-} from './fixtures/open-on-click-directive-fixtures.module';
+  OpenOnClickDirectiveModule
+} from './open-on-click.module';
 
 class MockWidgetService {
   public openWidget(helpKey: string): void { }
@@ -28,11 +32,15 @@ describe('bbHelpDisableWidget Directive', () => {
     mockWidgetService = new MockWidgetService();
 
     TestBed.configureTestingModule({
+      declarations: [
+        HelpBBHelpTestComponent
+      ],
       providers: [
         { provide: HelpWidgetService, useValue: mockWidgetService }
       ],
       imports: [
-        OpenOnClickDirectiveFixturesModule
+        HelpModule,
+        OpenOnClickDirectiveModule
       ]
     }).compileComponents();
 

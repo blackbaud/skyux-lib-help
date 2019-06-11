@@ -6,7 +6,7 @@ import {
 
 import {
   HelpWidgetService
-} from '../shared';
+} from '../shared/widget.service';
 
 @Component({
   selector: 'bb-help-key',
@@ -39,7 +39,8 @@ export class HelpKeyComponent implements OnDestroy {
   }
 
   constructor(
-    private widgetService: HelpWidgetService) { }
+    private widgetService: HelpWidgetService
+  ) {}
 
   public ngOnDestroy() {
     if (this.pageDefaultKey || !this.widgetService.pageDefaultKey) {

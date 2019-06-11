@@ -11,14 +11,11 @@ describe('Initialization Service', () => {
 
   beforeEach(() => {
     spyOn(BBHelpClient, 'load').and.callFake((config: any) => { });
-    spyOn(BBHelpClient, 'ready').and.callFake((config: any) => Promise.resolve());
   });
 
   it('should call the Client\'s load method with the config passed to the service', () => {
     const mockConfig = { 'productId': 'test_id' };
     initializationService.load(mockConfig);
-    BBHelpClient.ready().then(() => {
-      expect(BBHelpClient.load).toHaveBeenCalledWith(mockConfig);
-    });
+    expect(BBHelpClient.load).toHaveBeenCalledWith(mockConfig);
   });
 });
