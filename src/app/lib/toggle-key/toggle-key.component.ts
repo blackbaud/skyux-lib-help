@@ -9,7 +9,7 @@ import {
 })
 export class ToggleKeyComponent {
   public helpKey1: string = 'gonxt-workflow.html';
-  public helpKey2: string = 'bb-new-features.html';
+  public helpKey2: string = 'example1.html';
 
   public helpKey: string = this.helpKey1;
 
