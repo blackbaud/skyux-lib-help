@@ -1,6 +1,6 @@
 {
   "name": "@blackbaud/skyux-lib-help",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Angular 2 components for SKY UX Builder SPAs",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
@@ -19,7 +19,7 @@
   "peerDependencies": {
     "@angular/common": ">=4.3.6",
     "@angular/core": ">=4.3.6",
-    "@blackbaud/help-client": "^2.0.0-beta.5"
+    "@blackbaud/help-client": "^2.0.0"
   },
   "devDependencies": {
     "@angular/animations": "7.2.2",
