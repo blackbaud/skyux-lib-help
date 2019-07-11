@@ -1,5 +1,5 @@
 # 3.1.0 (2019-06-21)
-- Updated peer dependency to point to the official `2.0.0` release of `@blackbaud/help-client`.
+- Updated peer dependency to point to the official `2.0.0` release of `@blackbaud/help-client`. [#50](https://github.com/blackbaud/skyux-lib-help/pull/50)
 
 # 3.0.0 (2019-06-21)
 - Official 3.0.0 release.
