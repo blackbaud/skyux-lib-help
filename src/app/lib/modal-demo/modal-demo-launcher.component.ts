@@ -31,7 +31,8 @@ export class SkyModalDemoComponent {
         {
           provide: SkyModalDemoContext, useValue: context
         }
-      ]
+      ],
+      fullPage: true
     });
 
     modalInstance.closed.subscribe((result: SkyModalCloseArgs) => {

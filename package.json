@@ -33,7 +33,7 @@
     "@angular/platform-browser-dynamic": "7.2.2",
     "@angular/router": "7.2.2",
     "@blackbaud/auth-client": "2.14.0",
-    "@blackbaud/help-client": "2.0.0-beta.10",
+    "@blackbaud/help-client": "2.0.0",
     "@pact-foundation/pact-web": "8.2.4",
     "@skyux-sdk/builder": "3.6.6",
     "@skyux-sdk/pact": "3.2.0",
