@@ -1,6 +1,11 @@
 language: node_js
 sudo: required
-dist: trusty
+
+addons:
+  chrome: stable
+
+services:
+  - xvfb
 
 git:
   depth: 10
@@ -15,9 +20,7 @@ cache:
     - node_modules
 
 before_install:
-  - export CHROME_BIN=/usr/bin/google-chrome
-  - export DISPLAY=:99.0
-  - bash <(curl -s https://blackbaud.github.io/skyux-travis/library-before-install.sh)
+  - npm install -g @blackbaud/skyux-cli
 
 after_script:
   - bash <(curl -s https://blackbaud.github.io/skyux-travis/library-after-script.sh)
