@@ -7,12 +7,33 @@ import {
 } from '@blackbaud/help-client';
 
 import {
+  SkyAppWindowRef
+} from '@skyux/core';
+
+import {
+  SkyAppConfig
+} from '@skyux/config';
+
+import {
   HelpWidgetConfig
 } from './widget-config';
 
 @Injectable()
 export class HelpInitializationService {
-  public load(config: HelpWidgetConfig) {
-      return BBHelpClient.load(config);
+  public constructor(private windowRef: SkyAppWindowRef, private config: SkyAppConfig) {
+  }
+
+  public load(config: HelpWidgetConfig = {}) {
+    const extraConfig: HelpWidgetConfig = {};
+    if (this.config.runtime.params.has('svcid')) {
+      extraConfig.extends = this.config.runtime.params.get('svcid');
+    }
+
+    const skyuxHost = this.windowRef.nativeWindow.SKYUX_HOST;
+    if (skyuxHost && !config.locale) {
+      const languages = skyuxHost.acceptLanguage || '';
+      extraConfig.locale = languages.split(',')[0];
+    }
+    return BBHelpClient.load({...config, ...extraConfig});
   }
 }
