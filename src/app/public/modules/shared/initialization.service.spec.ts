@@ -3,14 +3,21 @@ import {
 } from '@blackbaud/help-client';
 
 import {
+  SkyAppConfig,
+  SkyAppRuntimeConfigParams
+} from '@skyux/config';
+
+import {
+  SkyAppWindowRef
+} from '@skyux/core';
+
+import {
   HelpInitializationService
 } from './initialization.service';
 
 import {
   HelpWidgetConfig
 } from './widget-config';
-import {SkyAppConfig, SkyAppRuntimeConfigParams} from '@skyux/config';
-import {SkyAppWindowRef} from '@skyux/core';
 
 const NO_OP_FUNC: Function = () => {
 };
@@ -30,7 +37,7 @@ describe('HelpInitializationService', () => {
 
   it('should call BBHelpClient.load with svcid from SkyAppConfig', () => {
     const svcid = 'svcid';
-    const initializationService = new HelpInitializationService(buildWindow(), buildConfig(svcid));
+    const initializationService = new HelpInitializationService(buildWindow(), buildConfig({svcid: svcid}));
     const givenConfig: HelpWidgetConfig = {productId: 'test_id'};
     const expectedConfig: HelpWidgetConfig = {...givenConfig, ...{extends: svcid}};
     initializationService.load(givenConfig);
@@ -39,9 +46,27 @@ describe('HelpInitializationService', () => {
 
   it('should call BBHelpClient.load with overwritten \'extends\' value from svcid', () => {
     const svcid = 'svcid';
-    const initializationService = new HelpInitializationService(buildWindow(), buildConfig(svcid));
+    const initializationService = new HelpInitializationService(buildWindow(), buildConfig({svcid: svcid}));
     const givenConfig: HelpWidgetConfig = {productId: 'test_id', extends: 'extends'};
     const expectedConfig: HelpWidgetConfig = {...givenConfig, ...{extends: svcid}};
+    initializationService.load(givenConfig);
+    expect(BBHelpClient.load).toHaveBeenCalledWith(expectedConfig);
+  });
+
+  it('should call BBHelpClient.load with envid from SkyAppConfig', () => {
+    const envid = 'envid';
+    const initializationService = new HelpInitializationService(buildWindow(), buildConfig({envid: envid}));
+    const givenConfig: HelpWidgetConfig = {productId: 'test_id'};
+    const expectedConfig: HelpWidgetConfig = {...givenConfig, ...{environmentId: envid}};
+    initializationService.load(givenConfig);
+    expect(BBHelpClient.load).toHaveBeenCalledWith(expectedConfig);
+  });
+
+  it('should call BBHelpClient.load with overwritten \'environmentId\' value from envid', () => {
+    const envid = 'envid';
+    const initializationService = new HelpInitializationService(buildWindow(), buildConfig({envid: envid}));
+    const givenConfig: HelpWidgetConfig = {productId: 'test_id', environmentId: 'environmentId'};
+    const expectedConfig: HelpWidgetConfig = {...givenConfig, ...{environmentId: envid}};
     initializationService.load(givenConfig);
     expect(BBHelpClient.load).toHaveBeenCalledWith(expectedConfig);
   });
@@ -87,9 +112,16 @@ function buildWindow(acceptLanguage: string = undefined): SkyAppWindowRef {
   return {nativeWindow: {SKYUX_HOST: host}} as SkyAppWindowRef;
 }
 
-function buildConfig(svcid: string = undefined): SkyAppConfig {
+function buildConfig(params: { svcid?: string, envid?: string } = undefined): SkyAppConfig {
   const host = 'https://example.com';
-  const url: string = svcid ? `${host}?svcid=${svcid}` : host;
-  const runtimeParams: SkyAppRuntimeConfigParams = new SkyAppRuntimeConfigParams(url, ['svcid']);
+  const url: string = params ? `${host}?${buildQueryParamString(params)}` : host;
+  const runtimeParams: SkyAppRuntimeConfigParams = new SkyAppRuntimeConfigParams(url, ['svcid', 'envid']);
   return {runtime: {params: runtimeParams}} as SkyAppConfig;
+}
+
+function buildQueryParamString(params: { [k: string]: string }): string {
+  return Object.keys(params)
+    .filter((key: string) => !!params[key])
+    .map((key: string) => `${key}=${params[key]}`)
+    .join('&');
 }

@@ -29,6 +29,10 @@ export class HelpInitializationService {
       extraConfig.extends = this.config.runtime.params.get('svcid');
     }
 
+    if (this.config.runtime.params.has('envid')) {
+      config.environmentId = this.config.runtime.params.get('envid');
+    }
+
     const skyuxHost = this.windowRef.nativeWindow.SKYUX_HOST;
     if (skyuxHost && !config.locale) {
       const languages = skyuxHost.acceptLanguage || '';
