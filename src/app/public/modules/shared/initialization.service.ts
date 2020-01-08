@@ -20,8 +20,10 @@ import {
 
 @Injectable()
 export class HelpInitializationService {
-  public constructor(private windowRef: SkyAppWindowRef, private config: SkyAppConfig) {
-  }
+  public constructor(
+    private windowRef: SkyAppWindowRef,
+    private config: SkyAppConfig
+  ) { }
 
   public load(config: HelpWidgetConfig = {}) {
     const extraConfig: HelpWidgetConfig = {};
