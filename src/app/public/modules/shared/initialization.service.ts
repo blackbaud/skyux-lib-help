@@ -26,9 +26,8 @@ export class HelpInitializationService {
   ) { }
 
   public load(config: HelpWidgetConfig = {}) {
-    const extraConfig: HelpWidgetConfig = {};
     if (this.config.runtime.params.has('svcid')) {
-      extraConfig.extends = this.config.runtime.params.get('svcid');
+      config.extends = this.config.runtime.params.get('svcid');
     }
 
     if (this.config.runtime.params.has('envid')) {
@@ -38,8 +37,8 @@ export class HelpInitializationService {
     const skyuxHost = this.windowRef.nativeWindow.SKYUX_HOST;
     if (skyuxHost && !config.locale) {
       const languages = skyuxHost.acceptLanguage || '';
-      extraConfig.locale = languages.split(',')[0];
+      config.locale = languages.split(',')[0];
     }
-    return BBHelpClient.load({...config, ...extraConfig});
+    return BBHelpClient.load(config);
   }
 }
