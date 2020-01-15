@@ -32,9 +32,6 @@ dist
 .vscode
 .vs
 
-# NPM lock file
-package-lock.json
-
 *.ngfactory.ts
 *.ngsummary.json
 yarn.lock
