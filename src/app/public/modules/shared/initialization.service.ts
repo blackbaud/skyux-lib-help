@@ -35,7 +35,7 @@ export class HelpInitializationService {
     @Optional() private extension: ConfigExtension = undefined
   ) { }
 
-  public load(config: HelpWidgetConfig = {}): void {
+  public load(config: HelpWidgetConfig = {}): Promise<void> {
     if (this.config.runtime.params.has('svcid')) {
       config.extends = this.config.runtime.params.get('svcid');
     }
@@ -49,7 +49,8 @@ export class HelpInitializationService {
       const languages = skyuxHost.acceptLanguage || '';
       config.locale = languages.split(',')[0];
     }
-    const newConfig: Observable<HelpWidgetConfig> = this.extension ? this.extension.extend(config) : of(config);
-    newConfig.subscribe(c => BBHelpClient.load(c));
+    const configObservable: Observable<HelpWidgetConfig> = this.extension ? this.extension.extend(config) : of(config);
+    return configObservable.toPromise()
+      .then((extendedConfig: HelpWidgetConfig) => BBHelpClient.load(extendedConfig));
   }
 }
