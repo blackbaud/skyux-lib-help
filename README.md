@@ -1,4 +1,4 @@
-# Skyux-Lib-Help
+# skyux-lib-help
 
 ### The SKYUX library for interacting with the Help Widget.
 

@@ -1,4 +1,8 @@
-## 3.2.0 (2020-01-06)
+## 3.3.0 (2020-03-20)
+
+- Add capability for extending configuration at runtime. [#56](https://github.com/blackbaud/skyux-lib-help/pull/56)
+
+## 3.2.0 (2020-01-15)
 
 - Set key config values from `SkyAppConfig` and `SKYUX_HOST` (i.e. `extends`, `environmentId`, and `locale`). [#55](https://github.com/blackbaud/skyux-lib-help/pull/55)
 

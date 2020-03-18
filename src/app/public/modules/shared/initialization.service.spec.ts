@@ -19,6 +19,19 @@ import {
   HelpWidgetConfig
 } from './widget-config';
 
+import {
+  ConfigExtension
+} from './config.extension';
+
+import {
+  of
+} from 'rxjs';
+
+import {
+  fakeAsync,
+  tick
+} from '@angular/core/testing';
+
 const NO_OP_FUNC: Function = () => {
 };
 
@@ -105,6 +118,18 @@ describe('HelpInitializationService', () => {
     initializationService.load(givenConfig);
     expect(BBHelpClient.load).toHaveBeenCalledWith(expectedConfig);
   });
+
+  it('should call BBHelpClient.load with config from given extension', fakeAsync(() => {
+    const extensionSpy: jasmine.SpyObj<ConfigExtension> = jasmine.createSpyObj('ConfigExtension', ['extend']);
+    const expectedConfig: HelpWidgetConfig = { caseCentralUrl: 'https://case.centr.al'};
+    extensionSpy.extend.and.returnValue(of(expectedConfig));
+    const initializationService = new HelpInitializationService(buildWindow(), buildConfig(), extensionSpy);
+    const givenConfig: HelpWidgetConfig = {productId: 'test_id'};
+    initializationService.load(givenConfig);
+    tick();
+    expect(extensionSpy.extend).toHaveBeenCalledWith(givenConfig);
+    expect(BBHelpClient.load).toHaveBeenCalledWith(expectedConfig);
+  }));
 });
 
 function buildWindow(acceptLanguage: string = undefined): SkyAppWindowRef {

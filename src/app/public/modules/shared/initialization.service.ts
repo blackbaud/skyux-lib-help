@@ -1,5 +1,6 @@
 import {
-  Injectable
+  Injectable,
+  Optional
 } from '@angular/core';
 
 import {
@@ -18,14 +19,23 @@ import {
   HelpWidgetConfig
 } from './widget-config';
 
+import {
+  ConfigExtension
+} from './config.extension';
+
+import {
+  Observable, of
+} from 'rxjs';
+
 @Injectable()
 export class HelpInitializationService {
   public constructor(
     private windowRef: SkyAppWindowRef,
-    private config: SkyAppConfig
+    private config: SkyAppConfig,
+    @Optional() private extension: ConfigExtension = undefined
   ) { }
 
-  public load(config: HelpWidgetConfig = {}) {
+  public load(config: HelpWidgetConfig = {}): void {
     if (this.config.runtime.params.has('svcid')) {
       config.extends = this.config.runtime.params.get('svcid');
     }
@@ -39,6 +49,7 @@ export class HelpInitializationService {
       const languages = skyuxHost.acceptLanguage || '';
       config.locale = languages.split(',')[0];
     }
-    return BBHelpClient.load(config);
+    const newConfig: Observable<HelpWidgetConfig> = this.extension ? this.extension.extend(config) : of(config);
+    newConfig.subscribe(c => BBHelpClient.load(c));
   }
 }
