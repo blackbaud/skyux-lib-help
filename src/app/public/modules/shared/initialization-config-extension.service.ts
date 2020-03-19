@@ -11,6 +11,6 @@ import {
 } from 'rxjs';
 
 @Injectable()
-export abstract class ConfigExtension {
+export abstract class InitializationConfigExtensionService {
   public abstract extend(config: HelpWidgetConfig): Observable<HelpWidgetConfig>;
 }

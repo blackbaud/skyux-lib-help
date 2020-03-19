@@ -20,8 +20,8 @@ import {
 } from './widget-config';
 
 import {
-  ConfigExtension
-} from './config.extension';
+  InitializationConfigExtensionService
+} from './initialization-config-extension.service';
 
 import {
   of
@@ -126,7 +126,8 @@ describe('HelpInitializationService', () => {
   }));
 
   it('should call BBHelpClient.load with config from given extension', fakeAsync(() => {
-    const extensionSpy: jasmine.SpyObj<ConfigExtension> = jasmine.createSpyObj('ConfigExtension', ['extend']);
+    const extensionSpy: jasmine.SpyObj<InitializationConfigExtensionService> =
+      jasmine.createSpyObj('InitializationConfigExtensionService', ['extend']);
     const expectedConfig: HelpWidgetConfig = {caseCentralUrl: 'https://case.centr.al'};
     extensionSpy.extend.and.returnValue(of(expectedConfig));
     const initializationService = new HelpInitializationService(buildWindow(), buildConfig(), extensionSpy);
