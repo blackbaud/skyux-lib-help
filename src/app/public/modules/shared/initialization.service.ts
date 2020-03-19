@@ -24,7 +24,8 @@ import {
 } from './config.extension';
 
 import {
-  Observable, of
+  Observable,
+  of
 } from 'rxjs';
 
 @Injectable()
