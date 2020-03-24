@@ -1,6 +1,7 @@
-## 3.3.0 (2020-03-20)
+## 3.3.0 (2020-03-24)
 
-- Add capability for extending configuration at runtime. [#56](https://github.com/blackbaud/skyux-lib-help/pull/56)
+- Bump acorn from 6.3.0 to 6.4.1 to address security vulnerability. [#56](https://github.com/blackbaud/skyux-lib-help/pull/56)
+- Add capability for extending configuration at runtime. [#56](https://github.com/blackbaud/skyux-lib-help/pull/57)
 
 ## 3.2.0 (2020-01-15)
 
