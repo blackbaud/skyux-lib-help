@@ -1,6 +1,6 @@
 # skyux-lib-help
 
-### The SKYUX library for interacting with the Help Widget.
+### The SKY UX library to interact with the Help Widget.
 
 ## Getting Started
 
