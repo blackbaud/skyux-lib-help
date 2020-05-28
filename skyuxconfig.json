@@ -7,5 +7,10 @@
     "myLibrary": {
       "name": "skyux-lib-help"
     }
+  },
+  "host": {
+    "frameOptions": {
+      "none": true
+    }
   }
 }
