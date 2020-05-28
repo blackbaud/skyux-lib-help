@@ -8,6 +8,11 @@
       "name": "skyux-lib-help"
     }
   },
+  "testSettings": {
+    "unit": {
+      "browserSet": "paranoid"
+    }
+  },
   "host": {
     "frameOptions": {
       "none": true
