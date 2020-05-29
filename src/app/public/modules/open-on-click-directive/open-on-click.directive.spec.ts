@@ -91,8 +91,8 @@ describe('bbHelpDisableWidget Directive', () => {
     });
 
     fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(openSpy).not.toHaveBeenCalled();
-    });
+    tick();
+
+    expect(openSpy).not.toHaveBeenCalled();
   }));
 });
