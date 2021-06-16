@@ -1,3 +1,10 @@
+## 5.0.0-beta.0 (2021-06-16)
+
+### New features
+
+- Added support for `@angular/core@^12`.
+- - Updated the following singleton services to use [Angular's preferred method to become tree-shakeable](https://angular.io/guide/singleton-services#using-providedin): `HelpInitializationService` and `HelpWidgetService`.
+
 ## 4.0.0 (2020-06-09)
 
 ### New features
@@ -79,4 +86,3 @@
 - `HelpWidgetService` released.
 - `HelpInitializationService` released.
 - Shifting the dependency for `HelpClient` to this library from `skyux-builder`.
-
