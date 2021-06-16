@@ -2,8 +2,8 @@
 
 ### New features
 
-- Added support for `@angular/core@^12`.
-- - Updated the following singleton services to use [Angular's preferred method to become tree-shakeable](https://angular.io/guide/singleton-services#using-providedin): `HelpInitializationService` and `HelpWidgetService`.
+- Added support for `@angular/core@^12`. [#74](https://github.com/blackbaud/skyux-lib-help/pull/74)
+- - Updated the following singleton services to use [Angular's preferred method to become tree-shakeable](https://angular.io/guide/singleton-services#using-providedin): `HelpInitializationService` and `HelpWidgetService`. [#74](https://github.com/blackbaud/skyux-lib-help/pull/74)
 
 ## 4.0.0 (2020-06-09)
 

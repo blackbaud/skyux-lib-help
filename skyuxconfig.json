@@ -8,6 +8,18 @@
       "name": "skyux-lib-help"
     }
   },
+  "pipelineSettings": {
+    "vsts": {
+      "testSettings": {
+        "e2e": {
+          "browserSet": false
+        },
+        "unit": {
+          "browserSet": false
+        }
+      }
+    }
+  },
   "testSettings": {
     "unit": {
       "browserSet": "paranoid"
