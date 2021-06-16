@@ -6,7 +6,9 @@ import {
   BBHelpClient
 } from '@blackbaud/help-client';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HelpWidgetService {
   private _pageDefaultKey: string;
 
