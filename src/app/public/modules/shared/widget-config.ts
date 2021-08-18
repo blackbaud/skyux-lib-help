@@ -1,14 +1,14 @@
 export interface HelpWidgetConfig {
   authEnabled?: boolean;
   /**
-   * This does nothing when {@link HelpWidgetConfig#mimicOmnibar} is false.
-   * Instead of using this property, disable omnibar mimicking.
+   * This does nothing when {@link HelpWidgetConfig#helpMode} is menu.
+   * Instead of using this property, enter menu mode.
    * @deprecated
    */
   caseCentralUrl?: string;
   /**
-   * This does nothing when {@link HelpWidgetConfig#mimicOmnibar} is false.
-   * Instead of using this property, disable omnibar mimicking.
+   * This does nothing when {@link HelpWidgetConfig#helpMode} is menu.
+   * Instead of using this property, enter menu mode.
    * @deprecated
    */
   communityUrl?: string;
@@ -16,34 +16,42 @@ export interface HelpWidgetConfig {
   defaultHelpKey?: string;
   extends?: string;
   /**
-   * This does nothing when {@link HelpWidgetConfig#mimicOmnibar} is false.
-   * Instead of using this property, disable omnibar mimicking.
+   * This does nothing when {@link HelpWidgetConfig#helpMode} is menu.
+   * Instead of using this property, enter menu mode.
    * @deprecated
    */
   getChatData?: any;
   getCurrentHelpKey?: any;
   /**
-   * This does nothing when {@link HelpWidgetConfig#mimicOmnibar} is false.
-   * Instead of using this property, disable omnibar mimicking.
+   * This does nothing when {@link HelpWidgetConfig#helpMode} is menu.
+   * Instead of using this property, enter menu mode.
    * @deprecated
    */
   headerColor?: string;
   /**
-   * This does nothing when {@link HelpWidgetConfig#mimicOmnibar} is false.
-   * Instead of using this property, disable omnibar mimicking.
+   * This does nothing when {@link HelpWidgetConfig#helpMode} is menu.
+   * Instead of using this property, enter menu mode.
    * @deprecated
    */
   headerTextColor?: string;
   helpBaseUrl?: string;
   /**
-   * This does nothing when {@link HelpWidgetConfig#mimicOmnibar} is false.
-   * Instead of using this property, disable omnibar mimicking.
+   * This does nothing when {@link HelpWidgetConfig#helpMode} is menu.
+   * Instead of using this property, enter menu mode.
    * @deprecated
    */
   helpCenterUrl?: string;
   /**
-   * This does nothing when {@link HelpWidgetConfig#mimicOmnibar} is false.
-   * Instead of using this property, disable omnibar mimicking.
+   * Determines if widget will attempt to visually mimic being in the omnibar.
+   * If legacy (default), the widget will create a green-ear trigger in the DOM that is designed to be on top of the omnibar.
+   * If menu, the widget will not create any visual elements in the DOM (leaving that for the omnibar to do itself)
+   * and will open all topics in a new tab.
+   * Menu mode is recommended.
+   */
+  helpMode?: 'legacy' | 'menu';
+  /**
+   * This does nothing when {@link HelpWidgetConfig#helpMode} is menu.
+   * Instead of using this property, enter menu mode.
    * @deprecated
    */
   hideHelpChat?: boolean | string;
@@ -53,42 +61,35 @@ export interface HelpWidgetConfig {
    */
   hideUndock?: boolean | string;
   /**
-   * This does nothing when {@link HelpWidgetConfig#mimicOmnibar} is false.
-   * Instead of using this property, disable omnibar mimicking.
+   * This does nothing when {@link HelpWidgetConfig#helpMode} is menu.
+   * Instead of using this property, enter menu mode.
    * @deprecated
    */
   hideWidgetOnMobile?: boolean;
   hostQueryParams?: string;
   /**
-   * This does nothing when {@link HelpWidgetConfig#mimicOmnibar} is false.
-   * Instead of using this property, disable omnibar mimicking.
+   * This does nothing when {@link HelpWidgetConfig#helpMode} is menu.
+   * Instead of using this property, enter menu mode.
    * @deprecated
    */
   knowledgebaseUrl?: string;
   locale?: string;
-  /**
-   * Determines if widget will attempt to mimic being in the omnibar.
-   * If true (default), the widget will create a green-ear trigger in the DOM that is designed to be on top of the omnibar.
-   * If false, the widget will not create any visual elements in the DOM and will open all topics in a new tab.
-   * It's recommended to disable omnibar mimicking.
-   */
-  mimicOmnibar?: boolean;
   productId?: string;
   /**
-   * This does nothing when {@link HelpWidgetConfig#mimicOmnibar} is false.
-   * Instead of using this property, disable omnibar mimicking.
+   * This does nothing when {@link HelpWidgetConfig#helpMode} is menu.
+   * Instead of using this property, enter menu mode.
    * @deprecated
    */
   searchService?: string;
   /**
-   * This does nothing when {@link HelpWidgetConfig#mimicOmnibar} is false.
-   * Instead of using this property, disable omnibar mimicking.
+   * This does nothing when {@link HelpWidgetConfig#helpMode} is menu.
+   * Instead of using this property, enter menu mode.
    * @deprecated
    */
   trainingCentralUrl?: string;
   /**
-   * This does nothing when {@link HelpWidgetConfig#mimicOmnibar} is false.
-   * Instead of using this property, disable omnibar mimicking.
+   * This does nothing when {@link HelpWidgetConfig#helpMode} is menu.
+   * Instead of using this property, enter menu mode.
    * @deprecated
    */
   useFlareSearch?: boolean;
