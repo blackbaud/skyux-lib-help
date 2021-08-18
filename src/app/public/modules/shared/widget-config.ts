@@ -60,6 +60,7 @@ export interface HelpWidgetConfig {
    * @deprecated
    */
   hideUndock?: boolean | string;
+  helpUpdateCallback?: (args: { url: string }) => void;
   /**
    * This does nothing when {@link HelpWidgetConfig#helpMode} is menu.
    * Instead of using this property, enter menu mode.
