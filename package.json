@@ -12,8 +12,8 @@
   "author": "Blackbaud",
   "license": "ISC",
   "peerDependencies": {
-    "@angular/common": "^9.1.9",
-    "@angular/core": "^9.1.9",
+    "@angular/common": "^12.0.0",
+    "@angular/core": "^12.0.0",
     "@blackbaud/help-client": "^3.0.0"
   },
   "devDependencies": {
