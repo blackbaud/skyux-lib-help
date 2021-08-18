@@ -1,6 +1,6 @@
 {
   "name": "@blackbaud/skyux-lib-help",
-  "version": "4.0.1-rc.2",
+  "version": "4.0.1-rc.3",
   "description": "Angular 2 components for SKY UX Builder SPAs",
   "scripts": {
     "skyux": "skyux",
