@@ -1,3 +1,7 @@
+## 5.0.0-beta.0 (2021-09-01)
+
+- Initial beta release.
+
 ## 4.0.0 (2020-06-09)
 
 ### New features
@@ -79,4 +83,3 @@
 - `HelpWidgetService` released.
 - `HelpInitializationService` released.
 - Shifting the dependency for `HelpClient` to this library from `skyux-builder`.
-
