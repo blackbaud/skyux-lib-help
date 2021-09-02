@@ -1,6 +1,6 @@
 {
   "name": "@blackbaud/skyux-lib-help",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Angular 2 components for SKY UX Builder SPAs",
   "scripts": {
     "skyux": "skyux",
@@ -27,7 +27,7 @@
     "@angular/platform-browser-dynamic": "9.1.13",
     "@angular/router": "9.1.13",
     "@blackbaud/auth-client": "2.49.0",
-    "@blackbaud/help-client": "3.0.0",
+    "@blackbaud/help-client": "3.0.1-rc.22",
     "@skyux-sdk/builder": "4.10.0",
     "@skyux-sdk/testing": "4.3.0",
     "@skyux/assets": "4.0.1",

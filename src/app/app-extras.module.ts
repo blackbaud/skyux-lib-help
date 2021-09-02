@@ -1,11 +1,8 @@
 import {
   APP_INITIALIZER,
+  InjectionToken,
   NgModule
 } from '@angular/core';
-
-import {
-  SkyAppConfig
-} from '@skyux/config';
 
 import {
   SkyModalDemoFormComponent,
@@ -22,19 +19,23 @@ import {
   HelpInitializationService
 } from './public/public_api';
 
+type HelpMode = 'legacy' | 'menu';
+const HELP_MODE: InjectionToken<HelpMode> = new InjectionToken<HelpMode>('helpMode');
+
 /**
  * Loads the widget via {@link HelpInitializationService} in similar fashion as `@skyux-sdk/builder`.
  * This is done manually for the local demo in order to differentiate between the local classes from the classes that
  * `@skyux-sdk/builder` is using.
- * Consumers should not mimic this strategy.
+ * Consumers should not mimic this strategy and should leverage {@link SkyuxConfig#help}.
  */
-function initFunction(initSvc: HelpInitializationService, appConfig: SkyAppConfig) {
-  return () => initSvc.load(appConfig?.skyux?.help);
+function initFunction(initSvc: HelpInitializationService, helpMode: HelpMode) {
+  // TODO provide {@link HelpWidgetConfig#helpUpdateCallback} when omnibar implements that feature.
+  return () => initSvc.load({ helpMode: helpMode });
 }
 
 /**
  * Consumers' version of {@link AppExtrasModule} would normally not contain
- * {@link BBHelpModule}, {@link HelpWidgetService}, or {@link HelpInitializationService}.
+ * {@link BBHelpModule}, {@link HelpWidgetService}, {@link HelpInitializationService}, {@link HELP_MODE}, or {@link initFunction}.
  * `@skyux-sdk/builder` would bring each in when the consumer provides a config object (even an empty object) in the
  * `skyuxconfig.json`'s `help` property.
  * This is done here in order to differentiate between the local classes from the classes that `@skyux-sdk/builder` is
@@ -49,7 +50,13 @@ function initFunction(initSvc: HelpInitializationService, appConfig: SkyAppConfi
     HelpWindowRef,
     HelpWidgetService,
     HelpInitializationService,
-    {provide : APP_INITIALIZER, useFactory: initFunction, deps: [HelpInitializationService, SkyAppConfig] , multi : true}
+    { provide: HELP_MODE, useValue: 'menu' },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initFunction,
+      deps: [HelpInitializationService, HELP_MODE],
+      multi: true
+    }
   ],
   entryComponents: [
     SkyModalDemoFormComponent
