@@ -27,7 +27,7 @@
     "@angular/platform-browser-dynamic": "9.1.13",
     "@angular/router": "9.1.13",
     "@blackbaud/auth-client": "2.49.0",
-    "@blackbaud/help-client": "3.0.1-rc.22",
+    "@blackbaud/help-client": "3.0.1",
     "@skyux-sdk/builder": "4.10.0",
     "@skyux-sdk/testing": "4.3.0",
     "@skyux/assets": "4.0.1",

@@ -19,7 +19,7 @@ import {
   HelpInitializationService
 } from './public/public_api';
 
-type HelpMode = 'legacy' | 'menu';
+type HelpMode = 'legacy' | 'menu' | undefined;
 const HELP_MODE: InjectionToken<HelpMode> = new InjectionToken<HelpMode>('helpMode');
 
 /**
@@ -30,7 +30,10 @@ const HELP_MODE: InjectionToken<HelpMode> = new InjectionToken<HelpMode>('helpMo
  */
 function initFunction(initSvc: HelpInitializationService, helpMode: HelpMode) {
   // TODO provide {@link HelpWidgetConfig#helpUpdateCallback} when omnibar implements that feature.
-  return () => initSvc.load({ helpMode: helpMode });
+  return () => {
+    const config = (helpMode === undefined) ? {} : { helpMode: helpMode };
+    return initSvc.load(config);
+  };
 }
 
 /**
@@ -50,7 +53,9 @@ function initFunction(initSvc: HelpInitializationService, helpMode: HelpMode) {
     HelpWindowRef,
     HelpWidgetService,
     HelpInitializationService,
-    { provide: HELP_MODE, useValue: 'menu' },
+    // { provide: HELP_MODE, useValue: 'menu' },
+    // { provide: HELP_MODE, useValue: 'legacy' },
+    { provide: HELP_MODE, useValue: undefined },
     {
       provide: APP_INITIALIZER,
       useFactory: initFunction,
