@@ -3,15 +3,27 @@
   "mode": "easy",
   "name": "skyux-lib-help",
   "compileMode": "aot",
-  "appSettings": {
-    "myLibrary": {
-      "name": "skyux-lib-help"
+  "app": {
+    "theming": {
+      "theme": "modern",
+      "supportedThemes": [
+        "modern",
+        "default"
+      ]
+    }
+  },
+  "params": {
+    "svcid": {
+      "value": "renxt"
     }
   },
   "testSettings": {
     "unit": {
       "browserSet": "paranoid"
     }
+  },
+  "omnibar": {
+    "enableHelp": true
   },
   "host": {
     "frameOptions": {
