@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
 import {
   SkyThemeService
 } from '@skyux/theme';
+
+import { BBHelpModule } from 'projects/help/src/bb-help.module';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { DemosModule } from './demos/demos.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,9 @@ import {
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DemosModule,
+    BBHelpModule
   ],
   providers: [
     SkyThemeService

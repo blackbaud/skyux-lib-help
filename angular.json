@@ -140,6 +140,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "ssl": true
+          },
           "configurations": {
             "production": {
               "browserTarget": "help-showcase:build:production"
