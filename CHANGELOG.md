@@ -1,3 +1,7 @@
+## 5.0.0-beta.0 (2021-10-06)
+
+- Added support for Angular 12. [#79](https://github.com/blackbaud/skyux-lib-help/pull/79)
+
 ## 4.0.1
 
 ### New features
