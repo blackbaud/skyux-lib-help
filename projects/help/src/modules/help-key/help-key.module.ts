@@ -7,10 +7,6 @@ import {
 } from '@angular/common';
 
 import {
-  HelpWidgetService
-} from '../shared/widget.service';
-
-import {
   HelpKeyComponent
 } from './help-key.component';
 
