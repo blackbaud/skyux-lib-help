@@ -5,10 +5,9 @@ import { DemosComponent } from './demos.component';
 
 import {
   BBHelpModule,
-  HelpWidgetService,
   HelpInitializationService
 } from 'projects/help/src/public-api';
-import { HelpWindowRef, SkyModalDemoFormComponent, TestButtonComponent, ToggleWidgetComponent } from './lib';
+import { SkyModalDemoFormComponent, TestButtonComponent, ToggleWidgetComponent } from './lib';
 import { SkyModalModule } from '@skyux/modals';
 import { SkyModalDemoComponent } from './lib/modal-demo/modal-demo-launcher.component';
 import { ToggleKeyComponent } from './lib/toggle-key/toggle-key.component';
@@ -56,9 +55,6 @@ function initFunction(initSvc: HelpInitializationService, helpMode: HelpMode) {
     ToggleWidgetComponent
   ],
   providers: [
-    HelpWindowRef,
-    HelpWidgetService,
-    HelpInitializationService,
     // { provide: HELP_MODE, useValue: 'menu' },
     { provide: HELP_MODE, useValue: 'legacy' },
     // { provide: HELP_MODE, useValue: undefined },

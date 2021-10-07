@@ -18,19 +18,12 @@ import {
   OpenOnClickDirectiveModule
 } from './modules/open-on-click-directive/open-on-click.module';
 
-import {
-  HelpInitializationService
-} from './modules/shared/initialization.service';
-
 @NgModule({
   exports: [
     HelpKeyModule,
     HelpModule,
     BBHelpDisableModule,
     OpenOnClickDirectiveModule
-  ],
-  providers: [
-    HelpInitializationService
   ]
 })
 export class BBHelpModule { }

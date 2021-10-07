@@ -28,7 +28,9 @@ import {
   of
 } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HelpInitializationService {
   public constructor(
     private windowRef: SkyAppWindowRef,

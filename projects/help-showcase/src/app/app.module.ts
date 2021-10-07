@@ -18,8 +18,7 @@ import { DemosModule } from './demos/demos.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DemosModule,
-    BBHelpModule
+    DemosModule
   ],
   providers: [
     SkyThemeService

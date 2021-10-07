@@ -23,9 +23,6 @@ import {
   ],
   exports: [
     HelpKeyComponent
-  ],
-  providers: [
-    HelpWidgetService
   ]
 })
 export class HelpKeyModule { }
