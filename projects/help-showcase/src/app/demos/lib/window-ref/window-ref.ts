@@ -4,7 +4,9 @@ function getWindow(): any {
   return window;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HelpWindowRef {
 
   get nativeWindow(): any {
