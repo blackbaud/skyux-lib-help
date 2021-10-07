@@ -55,7 +55,6 @@ function initFunction(initSvc: HelpInitializationService, helpMode: HelpMode) {
     ToggleWidgetComponent
   ],
   providers: [
-    HelpInitializationService,
     // { provide: HELP_MODE, useValue: 'menu' },
     { provide: HELP_MODE, useValue: 'legacy' },
     // { provide: HELP_MODE, useValue: undefined },
