@@ -44,7 +44,7 @@
     "@angular-eslint/template-parser": "12.7.0",
     "@angular/cli": "12.2.16",
     "@angular/compiler-cli": "12.2.16",
-    "@skyux-sdk/prettier-schematics": "^5.6.2",
+    "@skyux-sdk/prettier-schematics": "5.6.2",
     "@skyux-sdk/testing": "5.6.2",
     "@trivago/prettier-plugin-sort-imports": "3.2.0",
     "@types/jasmine": "3.8.2",
