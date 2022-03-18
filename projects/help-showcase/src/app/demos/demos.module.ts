@@ -1,25 +1,31 @@
 import { CommonModule } from '@angular/common';
 import { APP_INITIALIZER, InjectionToken, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { DemosComponent } from './demos.component';
+import { SkyAppConfig, SkyAppRuntimeConfigParams } from '@skyux/config';
+import { SkyModalModule } from '@skyux/modals';
 
 import {
   BBHelpModule,
-  HelpInitializationService
+  HelpInitializationService,
 } from 'projects/help/src/public-api';
-import { SkyModalDemoFormComponent, TestButtonComponent, ToggleWidgetComponent } from './lib';
-import { SkyModalModule } from '@skyux/modals';
-import { SkyModalDemoComponent } from './lib/modal-demo/modal-demo-launcher.component';
-import { ToggleKeyComponent } from './lib/toggle-key/toggle-key.component';
-import { SkyAppConfig, SkyAppRuntimeConfigParams } from '@skyux/config';
+
 import { Demo1Component } from './demo1/demo1.component';
 import { Demo2Component } from './demo2/demo2.component';
 import { Demo3Component } from './demo3/demo3.component';
 import { Demo4Component } from './demo4/demo4.component';
+import { DemosComponent } from './demos.component';
+import {
+  SkyModalDemoFormComponent,
+  TestButtonComponent,
+  ToggleWidgetComponent,
+} from './lib';
+import { SkyModalDemoComponent } from './lib/modal-demo/modal-demo-launcher.component';
+import { ToggleKeyComponent } from './lib/toggle-key/toggle-key.component';
 
 type HelpMode = 'legacy' | 'menu' | undefined;
-const HELP_MODE: InjectionToken<HelpMode> = new InjectionToken<HelpMode>('helpMode');
-
+const HELP_MODE: InjectionToken<HelpMode> = new InjectionToken<HelpMode>(
+  'helpMode'
+);
 
 /**
  * Loads the widget via {@link HelpInitializationService} in similar fashion as `@skyux-sdk/builder`.
@@ -30,18 +36,13 @@ const HELP_MODE: InjectionToken<HelpMode> = new InjectionToken<HelpMode>('helpMo
 function initFunction(initSvc: HelpInitializationService, helpMode: HelpMode) {
   // TODO provide {@link HelpWidgetConfig#helpUpdateCallback} when omnibar implements that feature.
   return () => {
-    const config = (helpMode === undefined) ? {} : { helpMode: helpMode };
+    const config = helpMode === undefined ? {} : { helpMode: helpMode };
     return initSvc.load(config);
   };
 }
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    SkyModalModule,
-    BBHelpModule
-  ],
+  imports: [CommonModule, RouterModule, SkyModalModule, BBHelpModule],
   declarations: [
     Demo1Component,
     Demo2Component,
@@ -52,7 +53,7 @@ function initFunction(initSvc: HelpInitializationService, helpMode: HelpMode) {
     SkyModalDemoFormComponent,
     TestButtonComponent,
     ToggleKeyComponent,
-    ToggleWidgetComponent
+    ToggleWidgetComponent,
   ],
   providers: [
     // { provide: HELP_MODE, useValue: 'menu' },
@@ -62,7 +63,7 @@ function initFunction(initSvc: HelpInitializationService, helpMode: HelpMode) {
       provide: APP_INITIALIZER,
       useFactory: initFunction,
       deps: [HelpInitializationService, HELP_MODE],
-      multi: true
+      multi: true,
     },
     {
       provide: SkyAppConfig,
@@ -79,8 +80,8 @@ function initFunction(initSvc: HelpInitializationService, helpMode: HelpMode) {
         config.runtime.params = runtimeParams;
 
         return config;
-      }
-    }
+      },
+    },
   ],
 })
 export class DemosModule {}

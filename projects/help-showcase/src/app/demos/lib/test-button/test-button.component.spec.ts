@@ -1,23 +1,10 @@
-import {
-  ComponentFixture,
-  TestBed
-} from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
-import {
-  By
-} from '@angular/platform-browser';
+import { HelpWidgetService } from '../../public/public_api';
 
-import {
-  DebugElement
-} from '@angular/core';
-
-import {
-  TestButtonComponent
-} from './test-button.component';
-
-import {
-  HelpWidgetService
-} from '../../public/public_api';
+import { TestButtonComponent } from './test-button.component';
 
 describe('TestButtonComponent', () => {
   let component: TestButtonComponent;
@@ -27,21 +14,18 @@ describe('TestButtonComponent', () => {
   let mockWidgetService: any;
 
   class MockWidgetService {
-    public openToHelpKey = jasmine.createSpy('openToHelpKey').and.callFake(() => { });
+    public openToHelpKey = jasmine
+      .createSpy('openToHelpKey')
+      .and.callFake(() => {});
   }
 
   beforeEach(() => {
     mockWidgetService = new MockWidgetService();
 
     TestBed.configureTestingModule({
-      declarations: [
-        TestButtonComponent
-      ],
-      providers: [
-        { provide: HelpWidgetService, useValue: mockWidgetService }
-      ]
-    })
-      .compileComponents();
+      declarations: [TestButtonComponent],
+      providers: [{ provide: HelpWidgetService, useValue: mockWidgetService }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TestButtonComponent);
     component = fixture.componentInstance;
@@ -51,7 +35,9 @@ describe('TestButtonComponent', () => {
   it('on click it should call the openWidget method on the service', () => {
     const helpKey = 'test-key.html';
     component.helpKey = helpKey;
-    debugElement.query(By.css('.test-button-component')).triggerEventHandler('click', undefined);
+    debugElement
+      .query(By.css('.test-button-component'))
+      .triggerEventHandler('click', undefined);
     expect(mockWidgetService.openToHelpKey).toHaveBeenCalledWith(helpKey);
   });
 });
