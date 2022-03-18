@@ -2,59 +2,39 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  tick
+  tick,
 } from '@angular/core/testing';
+import { SkyAppTestUtility } from '@skyux-sdk/testing';
 
-import {
-  SkyAppTestUtility
-} from '@skyux-sdk/testing';
+import { HelpModule } from '../help/help.module';
+import { HelpWidgetService } from '../shared/widget.service';
 
-import {
-  HelpWidgetService
-} from '../shared/widget.service';
-
-import {
-  HelpModule
-} from '../help/help.module';
-
-import {
-  HelpBBHelpTestComponent
-} from './fixtures/help.component.fixture';
-
-import {
-  OpenOnClickDirectiveModule
-} from './open-on-click.module';
+import { HelpBBHelpTestComponent } from './fixtures/help.component.fixture';
+import { OpenOnClickDirectiveModule } from './open-on-click.module';
 
 class MockWidgetService {
-  public openWidget(helpKey: string): void { }
+  public openWidget(helpKey: string): void {}
 }
 
 describe('bbHelpDisableWidget Directive', () => {
   let fixture: ComponentFixture<HelpBBHelpTestComponent>;
   let mockWidgetService: MockWidgetService;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     mockWidgetService = new MockWidgetService();
 
-    TestBed.configureTestingModule({
-      declarations: [
-        HelpBBHelpTestComponent
-      ],
-      providers: [
-        { provide: HelpWidgetService, useValue: mockWidgetService }
-      ],
-      imports: [
-        HelpModule,
-        OpenOnClickDirectiveModule
-      ]
+    await TestBed.configureTestingModule({
+      declarations: [HelpBBHelpTestComponent],
+      providers: [{ provide: HelpWidgetService, useValue: mockWidgetService }],
+      imports: [HelpModule, OpenOnClickDirectiveModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HelpBBHelpTestComponent);
   });
 
   it('should call the widget service open method with a helpKey on click', fakeAsync(() => {
-    let aTag = fixture.debugElement.nativeElement.querySelector('a');
-    let openSpy = spyOn(mockWidgetService, 'openWidget').and.callThrough();
+    const aTag = fixture.debugElement.nativeElement.querySelector('a');
+    const openSpy = spyOn(mockWidgetService, 'openWidget').and.callThrough();
     fixture.detectChanges();
     aTag.click();
     fixture.whenStable().then(() => {
@@ -65,13 +45,13 @@ describe('bbHelpDisableWidget Directive', () => {
   it('should call the widget service open method on enter keypress', fakeAsync(() => {
     fixture.detectChanges();
 
-    let aTag = fixture.debugElement.nativeElement.querySelector('a');
-    let openSpy = spyOn(mockWidgetService, 'openWidget').and.callThrough();
+    const aTag = fixture.debugElement.nativeElement.querySelector('a');
+    const openSpy = spyOn(mockWidgetService, 'openWidget').and.callThrough();
 
     SkyAppTestUtility.fireDomEvent(aTag, 'keydown', {
       keyboardEventInit: {
-        key: 'Enter'
-      }
+        key: 'Enter',
+      },
     });
 
     fixture.detectChanges();
@@ -81,13 +61,13 @@ describe('bbHelpDisableWidget Directive', () => {
   }));
 
   it('should not call the widget service open method on other keypresses', fakeAsync(() => {
-    let aTag = fixture.debugElement.nativeElement.querySelector('a');
-    let openSpy = spyOn(mockWidgetService, 'openWidget').and.callThrough();
+    const aTag = fixture.debugElement.nativeElement.querySelector('a');
+    const openSpy = spyOn(mockWidgetService, 'openWidget').and.callThrough();
 
     SkyAppTestUtility.fireDomEvent(aTag, 'keydown', {
       keyboardEventInit: {
-        key: 'Tab'
-      }
+        key: 'Tab',
+      },
     });
 
     fixture.detectChanges();

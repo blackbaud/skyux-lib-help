@@ -15,6 +15,7 @@ Enable the help widget by providing a configuration in `skyuxconfig.json`. `@sky
   }
 }
 ```
+
 See [widget-config.ts] for more configuration properties.
 
 Use the widget by injecting the `HelpWidgetService` into your desired directive/service.
@@ -22,13 +23,10 @@ Use the widget by injecting the `HelpWidgetService` into your desired directive/
 ```typescript
 @Component({
   selector: 'my-comp',
-  template: `
-    <button (click)="open()">Help</button>
-  `
+  template: ` <button (click)="open()">Help</button> `,
 })
 export class MyComponent {
-  public constructor(private helpSvc: HelpWidgetService) {
-  }
+  public constructor(private helpSvc: HelpWidgetService) {}
 
   public open(): void {
     this.helpSvc.openToHelpKey('bb-custom-fields.html');
