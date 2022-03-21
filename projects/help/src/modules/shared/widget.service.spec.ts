@@ -13,7 +13,6 @@ describe('BBHelpClientService', () => {
     setHelpKeySpy = spyOn(BBHelpClient, 'setCurrentHelpKey').and.callFake(
       (key: string) => {}
     );
-
     spyOn(BBHelpClient, 'ready').and.callFake(() => {
       if (resolvePromise) {
         return Promise.resolve();
