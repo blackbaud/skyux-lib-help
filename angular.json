@@ -171,9 +171,7 @@
               "projects/help-showcase/src/favicon.ico",
               "projects/help-showcase/src/assets"
             ],
-            "styles": [
-              "projects/help-showcase/src/styles.scss"
-            ],
+            "styles": ["projects/help-showcase/src/styles.scss"],
             "scripts": []
           }
         },
