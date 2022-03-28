@@ -10,8 +10,8 @@ import {
 
 declare const require: {
   context(path: string, deep?: boolean, filter?: RegExp): {
-    keys(): string[];
     <T>(id: string): T;
+    keys(): string[];
   };
 };
 
@@ -19,16 +19,9 @@ declare const require: {
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting(),
-  { teardown: { destroyAfterEach: true }},
 );
 
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
-
-// Find any tests included in the "testing" entry point.
-try {
-  const testingContext = require.context('../testing/', true, /\.spec\.ts$/);
-  testingContext.keys().map(testingContext);
-} catch (err) {}

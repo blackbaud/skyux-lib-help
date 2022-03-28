@@ -36,8 +36,8 @@
               "projects/help/src/test.ts"
             ],
             "styles": [
-              "@skyux/theme/css/sky.css",
-              "@skyux/theme/css/themes/modern/styles.css"
+              "node_modules/@skyux/theme/css/sky.css",
+              "node_modules/@skyux/theme/css/themes/modern/styles.css"
             ]
           }
         },
@@ -171,7 +171,11 @@
               "projects/help-showcase/src/favicon.ico",
               "projects/help-showcase/src/assets"
             ],
-            "styles": ["projects/help-showcase/src/styles.scss"],
+            "styles": [
+              "node_modules/@skyux/theme/css/sky.css",
+              "node_modules/@skyux/theme/css/themes/modern/styles.css",
+              "projects/help-showcase/src/styles.scss"
+            ],
             "scripts": []
           }
         },
