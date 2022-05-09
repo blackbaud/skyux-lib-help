@@ -1,3 +1,4 @@
+/.angular/cache
 # Ignore artifacts:
 .angular
 __skyux

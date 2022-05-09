@@ -1,3 +1,13 @@
+# 6.0.0 (2022-05-09)
+
+### ⚠ BREAKING CHANGES
+
+- Dropped support for Angular 12. [#84](https://github.com/blackbaud/skyux-lib-help/pull/84)
+
+### Features
+
+- Added support for Angular 13. [#84](https://github.com/blackbaud/skyux-lib-help/pull/84)
+
 # 6.0.0-beta.0 (2022-03-28)
 
 ### ⚠ BREAKING CHANGES
