@@ -16,7 +16,7 @@ Enable the help widget by providing a configuration in `skyuxconfig.json`. `@sky
 }
 ```
 
-See [widget-config.ts] for more configuration properties.
+See [widget-config.ts](https://github.com/blackbaud/skyux-lib-help/blob/master/projects/help/src/modules/shared/widget-config.ts) for more configuration properties.
 
 Use the widget by injecting the `HelpWidgetService` into your desired directive/service.
 
