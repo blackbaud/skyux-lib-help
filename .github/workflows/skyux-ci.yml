@@ -14,19 +14,21 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: '14.x'
-      - uses: blackbaud/skyux-sdk-actions@master
+      - uses: blackbaud/skyux-sdk-actions@ng-14
         with:
           browser-stack-access-key: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
           browser-stack-username: ${{ secrets.BROWSER_STACK_USERNAME }}
           github-token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
           npm-token: ${{ secrets.NPM_TOKEN }}
+          project: help
           slack-webhook: ${{ secrets.SLACK_WEBHOOK }}
+          code-coverage-browser-set: speedy
           code-coverage-threshold-branches: 96
           code-coverage-threshold-functions: 100
           code-coverage-threshold-lines: 98
