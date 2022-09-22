@@ -1,3 +1,6 @@
+/src/app/lib/
+/projects/*/src/assets/
+/src/assets/
 /.angular/cache
 # Ignore artifacts:
 .angular
