@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '14.x'
-      - run: sudo apt-get install libopus.so
+      - run: sudo apt-get install libopus
       - uses: blackbaud/skyux-sdk-actions@ng-14
         with:
           browser-stack-access-key: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
