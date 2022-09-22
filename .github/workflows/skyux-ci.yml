@@ -20,7 +20,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '14.x'
-      - run: sudo apt-get install opus-tools libharfbuzz-dev libwoff-dev
       - uses: blackbaud/skyux-sdk-actions@ng-14
         with:
           browser-stack-access-key: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
@@ -29,6 +28,7 @@ jobs:
           npm-token: ${{ secrets.NPM_TOKEN }}
           project: help
           slack-webhook: ${{ secrets.SLACK_WEBHOOK }}
+          code-coverage-browser-set: speedy
           code-coverage-threshold-branches: 96
           code-coverage-threshold-functions: 100
           code-coverage-threshold-lines: 98
