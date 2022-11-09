@@ -101,7 +101,8 @@
             "styles": [
               "node_modules/@skyux/theme/css/sky.css",
               "node_modules/@skyux/theme/css/themes/modern/styles.css",
-              "projects/help-showcase/src/styles.scss"
+              "projects/help-showcase/src/styles.scss",
+              "projects/help-showcase/src/app/skyux7-compat.css"
             ],
             "scripts": []
           },
@@ -174,7 +175,8 @@
             "styles": [
               "node_modules/@skyux/theme/css/sky.css",
               "node_modules/@skyux/theme/css/themes/modern/styles.css",
-              "projects/help-showcase/src/styles.scss"
+              "projects/help-showcase/src/styles.scss",
+              "projects/help-showcase/src/app/skyux7-compat.css"
             ],
             "scripts": []
           }
