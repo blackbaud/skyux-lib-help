@@ -9,13 +9,14 @@
     "paths": {
       "help": ["dist/help/help", "dist/help"]
     },
+    "esModuleInterop": true,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "es2020",
-    "lib": ["es2018", "dom"],
+    "module": "es2022",
+    "lib": ["es2022", "dom"],
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {

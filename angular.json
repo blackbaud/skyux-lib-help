@@ -38,7 +38,8 @@
             "styles": [
               "node_modules/@skyux/theme/css/sky.css",
               "node_modules/@skyux/theme/css/themes/modern/styles.css"
-            ]
+            ],
+            "polyfills": ["@skyux/packages/polyfills"]
           }
         },
         "lint": {
@@ -91,7 +92,10 @@
             "outputPath": "dist/help-showcase",
             "index": "projects/help-showcase/src/index.html",
             "main": "projects/help-showcase/src/main.ts",
-            "polyfills": "projects/help-showcase/src/polyfills.ts",
+            "polyfills": [
+              "projects/help-showcase/src/polyfills.ts",
+              "@skyux/packages/polyfills"
+            ],
             "tsConfig": "projects/help-showcase/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -101,8 +105,7 @@
             "styles": [
               "node_modules/@skyux/theme/css/sky.css",
               "node_modules/@skyux/theme/css/themes/modern/styles.css",
-              "projects/help-showcase/src/styles.scss",
-              "projects/help-showcase/src/app/skyux7-compat.css"
+              "projects/help-showcase/src/styles.scss"
             ],
             "scripts": []
           },
@@ -164,7 +167,10 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/help-showcase/src/test.ts",
-            "polyfills": "projects/help-showcase/src/polyfills.ts",
+            "polyfills": [
+              "projects/help-showcase/src/polyfills.ts",
+              "@skyux/packages/polyfills"
+            ],
             "tsConfig": "projects/help-showcase/tsconfig.spec.json",
             "karmaConfig": "projects/help-showcase/karma.conf.js",
             "inlineStyleLanguage": "scss",
@@ -175,8 +181,7 @@
             "styles": [
               "node_modules/@skyux/theme/css/sky.css",
               "node_modules/@skyux/theme/css/themes/modern/styles.css",
-              "projects/help-showcase/src/styles.scss",
-              "projects/help-showcase/src/app/skyux7-compat.css"
+              "projects/help-showcase/src/styles.scss"
             ],
             "scripts": []
           }
