@@ -1,3 +1,13 @@
+# 8.0.0 (2023-05-09)
+
+### ⚠ BREAKING CHANGES
+
+- Dropped support for Angular 14. [#92](https://github.com/blackbaud/skyux-lib-help/pull/92)
+
+### Features
+
+- Added support for Angular 15. [#92](https://github.com/blackbaud/skyux-lib-help/pull/92)
+
 # 8.0.0-alpha.0 (2023-02-21)
 
 ### ⚠ BREAKING CHANGES
