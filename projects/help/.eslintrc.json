@@ -1,9 +1,17 @@
 {
-  "extends": ["../../.eslintrc.json", "prettier"],
-  "ignorePatterns": ["!**/*", "documentation/**/*"],
+  "extends": [
+    "../../.eslintrc.json",
+    "prettier"
+  ],
+  "ignorePatterns": [
+    "!**/*",
+    "documentation/**/*"
+  ],
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": [
+        "*.ts"
+      ],
       "parserOptions": {
         "project": [
           "projects/help/tsconfig.lib.json",
@@ -16,7 +24,11 @@
           "error",
           {
             "type": "attribute",
-            "prefix": ["app", "bb", "sky"],
+            "prefix": [
+              "app",
+              "bb",
+              "sky"
+            ],
             "style": "camelCase"
           }
         ],
@@ -24,14 +36,20 @@
           "error",
           {
             "type": "element",
-            "prefix": ["app", "bb", "sky"],
+            "prefix": [
+              "app",
+              "bb",
+              "sky"
+            ],
             "style": "kebab-case"
           }
         ]
       }
     },
     {
-      "files": ["*.html"],
+      "files": [
+        "*.html"
+      ],
       "rules": {}
     }
   ]
