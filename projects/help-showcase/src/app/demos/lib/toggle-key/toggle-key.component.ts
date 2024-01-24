@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'toggle-key',
   templateUrl: './toggle-key.component.html',
   styleUrls: ['./toggle-key.component.scss'],

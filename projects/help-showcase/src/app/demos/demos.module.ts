@@ -1,13 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { APP_INITIALIZER, InjectionToken, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SkyAppConfig, SkyAppRuntimeConfigParams } from '@skyux/config';
-import { SkyModalModule } from '@skyux/modals';
-
 import {
   BBHelpModule,
   HelpInitializationService,
-} from 'projects/help/src/public-api';
+} from '@blackbaud/skyux-lib-help';
+import { SkyAppConfig, SkyAppRuntimeConfigParams } from '@skyux/config';
+import { SkyModalModule } from '@skyux/modals';
 
 import { Demo1Component } from './demo1/demo1.component';
 import { Demo2Component } from './demo2/demo2.component';

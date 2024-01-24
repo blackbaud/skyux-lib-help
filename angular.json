@@ -36,8 +36,8 @@
               "projects/help/src/test.ts"
             ],
             "styles": [
-              "node_modules/@skyux/theme/css/sky.css",
-              "node_modules/@skyux/theme/css/themes/modern/styles.css"
+              "@skyux/theme/css/sky.css",
+              "@skyux/theme/css/themes/modern/styles.css"
             ],
             "polyfills": ["@skyux/packages/polyfills"]
           }
@@ -103,8 +103,8 @@
               "projects/help-showcase/src/assets"
             ],
             "styles": [
-              "node_modules/@skyux/theme/css/sky.css",
-              "node_modules/@skyux/theme/css/themes/modern/styles.css",
+              "@skyux/theme/css/sky.css",
+              "@skyux/theme/css/themes/modern/styles.css",
               "projects/help-showcase/src/styles.scss"
             ],
             "scripts": []
@@ -149,10 +149,10 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "help-showcase:build:production"
+              "buildTarget": "help-showcase:build:production"
             },
             "development": {
-              "browserTarget": "help-showcase:build:development"
+              "buildTarget": "help-showcase:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -160,7 +160,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "help-showcase:build"
+            "buildTarget": "help-showcase:build"
           }
         },
         "test": {
@@ -179,8 +179,8 @@
               "projects/help-showcase/src/assets"
             ],
             "styles": [
-              "node_modules/@skyux/theme/css/sky.css",
-              "node_modules/@skyux/theme/css/themes/modern/styles.css",
+              "@skyux/theme/css/sky.css",
+              "@skyux/theme/css/themes/modern/styles.css",
               "projects/help-showcase/src/styles.scss"
             ],
             "scripts": []

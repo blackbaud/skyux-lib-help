@@ -1,8 +1,7 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-
-import { HelpWidgetService } from '../../public/public_api';
+import { HelpWidgetService } from '@blackbaud/skyux-lib-help';
 
 import { TestButtonComponent } from './test-button.component';
 
