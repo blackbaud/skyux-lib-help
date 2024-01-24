@@ -1,3 +1,13 @@
+# 10.0.0-alpha.0 (2024-01-24)
+
+### ⚠ BREAKING CHANGES
+
+- Dropped support for Angular 16. [#97](https://github.com/blackbaud/skyux-lib-help/pull/97)
+
+### Features
+
+- Added support for Angular 17. [#97](https://github.com/blackbaud/skyux-lib-help/pull/97)
+
 # 9.0.0 (2023-09-14)
 
 ### ⚠ BREAKING CHANGES

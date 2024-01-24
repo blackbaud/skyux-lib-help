@@ -1,12 +1,12 @@
 {
   "name": "@blackbaud/skyux-lib-help",
-  "version": "9.0.0",
+  "version": "10.0.0-alpha.0",
   "peerDependencies": {
-    "@angular/common": "^16.2.5",
-    "@angular/core": "^16.2.5",
+    "@angular/common": "^17.1.0",
+    "@angular/core": "^17.1.0",
     "@blackbaud/help-client": "^3.1.1",
-    "@skyux/config": "^9.0.0",
-    "@skyux/core": "^9.0.0"
+    "@skyux/config": "^10.0.0",
+    "@skyux/core": "^10.0.0"
   },
   "dependencies": {
     "tslib": "^2.6.2"

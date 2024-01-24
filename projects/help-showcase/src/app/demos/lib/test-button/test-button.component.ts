@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-
-import { HelpWidgetService } from 'projects/help/src/public-api';
+import { HelpWidgetService } from '@blackbaud/skyux-lib-help';
 
 @Component({
   selector: 'bb-help-button',

@@ -7,7 +7,7 @@
     "sourceMap": true,
     "declaration": false,
     "paths": {
-      "help": ["dist/help/help", "dist/help"]
+      "@blackbaud/skyux-lib-help": ["projects/help/src/public-api.ts"]
     },
     "esModuleInterop": true,
     "downlevelIteration": true,

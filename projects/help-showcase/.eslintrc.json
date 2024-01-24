@@ -16,7 +16,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": ["app", "sky"],
+            "prefix": ["app", "sky", "bb"],
             "style": "camelCase"
           }
         ],
@@ -24,7 +24,7 @@
           "error",
           {
             "type": "element",
-            "prefix": ["app", "sky"],
+            "prefix": ["app", "sky", "bb"],
             "style": "kebab-case"
           }
         ]
