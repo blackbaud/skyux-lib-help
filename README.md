@@ -1,3 +1,3 @@
-# @blackbaud/skyux-lib-help
+# @blackbaud/skyux-lib-help (deprecated)
 
-For information about `@blackbaud/skyux-lib-help` please visit the library's README file, located at `projects/help/README.md`.
+The `@blackbaud/skyux-lib-help` package is no longer supported. The source code for `@blackbaud/skyux-lib-help` remains in the [9.x.x](https://github.com/blackbaud/skyux-lib-help/tree/9.x.x) branch of this repo.
